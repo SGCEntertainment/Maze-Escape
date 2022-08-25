@@ -1,7 +1,7 @@
 using UnityEngine;
 using Fusion;
 
-public class NetworkSnakeCharacterController : NetworkBehaviour
+public class NetworkSnakeCharacterController : NetworkTransform
 {
     SnakeInputHandler snakeInputHandler;
 
@@ -11,8 +11,17 @@ public class NetworkSnakeCharacterController : NetworkBehaviour
     [Space(10)]
     [SerializeField] float speed;
 
-    private void Awake()
+    [Networked]
+    public Vector3 Velocity { get; set; }
+
+    protected override void Awake()
     {
+        snakeInputHandler = GetComponent<SnakeInputHandler>();
+    }
+
+    public override void Spawned()
+    {
+        base.Spawned();
         snakeInputHandler = GetComponent<SnakeInputHandler>();
     }
 

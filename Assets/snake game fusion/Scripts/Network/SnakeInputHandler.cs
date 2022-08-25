@@ -8,7 +8,7 @@ public class SnakeInputHandler : NetworkBehaviour
 
     Vector3 offset;
 
-    [HideInInspector, Networked]
+    [HideInInspector]
     public Vector2 Velocity { get; set; }
 
     private void Awake()

@@ -527,7 +527,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   isHold: 0
-  _Velocity: {x: 0, y: 0}
 --- !u!114 &6294248885636895410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,6 +540,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 1849803028108882841}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
   otherColor: {r: 1, g: 0, b: 0, a: 1}
   myRend: {fileID: 6294248884751488519}
   speed: 100
+  _Velocity: {x: 0, y: 0, z: 0}
