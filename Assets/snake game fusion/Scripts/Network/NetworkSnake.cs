@@ -20,12 +20,12 @@ public class NetworkSnake : NetworkBehaviour, IPlayerLeft
         {
             Local = this;
             RPC_SetNickName(Runner.UserId);
-            Debug.Log("Spawned own car");
+            Debug.Log("Spawned own snake");
         }
         else
         {
             _networkSnakeCharacterController.SetPlayerColorAsOther();
-            Debug.Log("Spawned other player car");
+            Debug.Log("Spawned other player snake");
         }
     }
 

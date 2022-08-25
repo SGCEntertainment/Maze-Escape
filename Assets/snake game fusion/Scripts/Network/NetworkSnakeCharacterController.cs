@@ -4,6 +4,7 @@ using Fusion;
 public class NetworkSnakeCharacterController : NetworkTransform
 {
     SnakeInputHandler snakeInputHandler;
+    NetworkRigidbody2D networkRigidbody2D;
 
     [SerializeField] Color otherColor;
     [SerializeField] SpriteRenderer myRend;
@@ -11,25 +12,28 @@ public class NetworkSnakeCharacterController : NetworkTransform
     [Space(10)]
     [SerializeField] float speed;
 
-    [Networked]
     public Vector3 Velocity { get; set; }
 
     protected override void Awake()
     {
         snakeInputHandler = GetComponent<SnakeInputHandler>();
+        networkRigidbody2D = GetComponent<NetworkRigidbody2D>();
     }
 
     public override void Spawned()
     {
         base.Spawned();
+
         snakeInputHandler = GetComponent<SnakeInputHandler>();
+        networkRigidbody2D = GetComponent<NetworkRigidbody2D>();
     }
 
     public override void FixedUpdateNetwork()
     {
         if(GetInput(out NetworkInputData data))
         {
-            transform.position += Runner.DeltaTime * speed * data.velocity;
+            //transform.position += Runner.DeltaTime * speed * data.velocity;
+            networkRigidbody2D.Rigidbody.velocity = speed * data.velocity;
         }
     }
 

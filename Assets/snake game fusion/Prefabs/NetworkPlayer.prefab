@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 6294248885636895565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8134421, y: 0.8134421, z: 1.4270915}
+  m_LocalScale: {x: 0.63295555, y: 0.63295555, z: 1}
   m_Children:
   - {fileID: 1849803028108882841}
   m_Father: {fileID: 0}
@@ -556,4 +556,3 @@ MonoBehaviour:
   otherColor: {r: 1, g: 0, b: 0, a: 1}
   myRend: {fileID: 6294248884751488519}
   speed: 100
-  _Velocity: {x: 0, y: 0, z: 0}
