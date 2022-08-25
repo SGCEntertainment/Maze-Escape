@@ -45,7 +45,7 @@ public class NetworkSpawnSnake : MonoBehaviour, INetworkRunnerCallbacks
 
         foreach(NetworkSnakeCharacterController player in networkSnakeCharacterControllers)
         {
-            player.GetComponent<SnakeInputHandler>().direction = Vector3.zero;
+            player.GetComponent<SnakeInputHandler>().Velocity = Vector3.zero;
             ResetPlayerPosition(player.transform);
         }
     }
@@ -53,7 +53,7 @@ public class NetworkSpawnSnake : MonoBehaviour, INetworkRunnerCallbacks
     public void ResetPlayerPosition(Transform _playerTransform)
     {
         _playerTransform.position = spawnPoint.position;
-        _playerTransform.GetComponent<SnakeInputHandler>().direction = Vector3.zero;
+        _playerTransform.GetComponent<SnakeInputHandler>().Velocity = Vector3.zero;
     }
 
     public void ShowResult(GameObject collision)

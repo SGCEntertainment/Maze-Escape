@@ -20,7 +20,7 @@ public class NetworkSnakeCharacterController : NetworkBehaviour
     {
         if(GetInput(out NetworkInputData data))
         {
-            transform.position += Runner.DeltaTime * speed * data.direction;
+            transform.position += Runner.DeltaTime * speed * data.velocity;
         }
     }
 
@@ -34,7 +34,7 @@ public class NetworkSnakeCharacterController : NetworkBehaviour
         if(collision.gameObject.CompareTag("border"))
         {
             snakeInputHandler.isHold = false;
-            snakeInputHandler.direction = NetworkSpawnSnake.Instance.spawnPoint.position;
+            snakeInputHandler.Velocity = NetworkSpawnSnake.Instance.spawnPoint.position;
             NetworkSpawnSnake.Instance.ResetPlayerPosition(transform);
         }
     }

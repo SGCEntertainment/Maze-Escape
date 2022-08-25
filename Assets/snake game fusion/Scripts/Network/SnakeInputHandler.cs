@@ -1,18 +1,19 @@
 using UnityEngine;
+using Fusion;
 
-public class SnakeInputHandler : MonoBehaviour
+public class SnakeInputHandler : NetworkBehaviour
 {
     [HideInInspector]
     public bool isHold;
 
     Vector3 offset;
 
-    [HideInInspector]
-    public Vector2 direction;
+    [HideInInspector, Networked]
+    public Vector2 Velocity { get; set; }
 
     private void Awake()
     {
-        direction = Vector3.zero;
+        Velocity = Vector3.zero;
     }
 
     void OnMouseDown()
@@ -25,7 +26,7 @@ public class SnakeInputHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
-        direction = Vector3.zero;
+        Velocity = Vector3.zero;
     }
 
     void OnMouseDrag()
@@ -36,14 +37,14 @@ public class SnakeInputHandler : MonoBehaviour
         }
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = (mousePosition - transform.position).normalized;
+        Velocity = (mousePosition - transform.position).normalized;
     }
 
     public NetworkInputData GetNetworkInput()
     {
         NetworkInputData networkInputData = new NetworkInputData
         {
-            direction = direction
+            velocity = Velocity
         };
 
         return networkInputData;

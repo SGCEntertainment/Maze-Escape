@@ -492,6 +492,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 6294248885636895414}
   - {fileID: 6294248885636895408}
+  - {fileID: 6294248885636895411}
   - {fileID: 6294248885636895410}
   SimulationBehaviours: []
 --- !u!114 &6294248885636895408
@@ -524,8 +525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c0bcf3df7ae9544ba6915b00341bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   isHold: 0
-  direction: {x: 0, y: 0}
+  _Velocity: {x: 0, y: 0}
 --- !u!114 &6294248885636895410
 MonoBehaviour:
   m_ObjectHideFlags: 0
