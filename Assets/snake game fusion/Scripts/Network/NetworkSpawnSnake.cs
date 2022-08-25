@@ -53,6 +53,7 @@ public class NetworkSpawnSnake : MonoBehaviour, INetworkRunnerCallbacks
     public void ResetPlayerPosition(Transform _playerTransform)
     {
         _playerTransform.position = spawnPoint.position;
+        _playerTransform.GetComponent<SnakeInputHandler>().direction = Vector3.zero;
     }
 
     public void ShowResult(GameObject collision)
