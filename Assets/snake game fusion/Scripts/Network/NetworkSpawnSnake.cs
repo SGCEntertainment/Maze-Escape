@@ -45,7 +45,7 @@ public class NetworkSpawnSnake : MonoBehaviour, INetworkRunnerCallbacks
 
         foreach(NetworkSnakeCharacterController player in networkSnakeCharacterControllers)
         {
-            player.GetComponent<SnakeInputHandler>().newPosition = spawnPoint.position;
+            player.GetComponent<SnakeInputHandler>().direction = Vector3.zero;
             ResetPlayerPosition(player.transform);
         }
     }

@@ -8,11 +8,11 @@ public class SnakeInputHandler : MonoBehaviour
     Vector3 offset;
 
     [HideInInspector]
-    public Vector2 newPosition;
+    public Vector2 direction;
 
     private void Awake()
     {
-        newPosition = NetworkSpawnSnake.Instance.spawnPoint.position;
+        direction = Vector3.zero;
     }
 
     void OnMouseDown()
@@ -20,7 +20,12 @@ public class SnakeInputHandler : MonoBehaviour
         isHold = true;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        offset = transform.position - mousePosition;
+        offset = mousePosition - transform.position;
+    }
+
+    private void OnMouseUp()
+    {
+        direction = Vector3.zero;
     }
 
     void OnMouseDrag()
@@ -31,14 +36,14 @@ public class SnakeInputHandler : MonoBehaviour
         }
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        newPosition = offset + mousePosition;
+        direction = (mousePosition - transform.position).normalized;
     }
 
     public NetworkInputData GetNetworkInput()
     {
         NetworkInputData networkInputData = new NetworkInputData
         {
-            newPosition = newPosition
+            direction = direction
         };
 
         return networkInputData;

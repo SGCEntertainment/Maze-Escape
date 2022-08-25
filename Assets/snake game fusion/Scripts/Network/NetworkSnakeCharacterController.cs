@@ -8,6 +8,9 @@ public class NetworkSnakeCharacterController : NetworkBehaviour
     [SerializeField] Color otherColor;
     [SerializeField] SpriteRenderer myRend;
 
+    [Space(10)]
+    [SerializeField] float speed;
+
     private void Awake()
     {
         snakeInputHandler = GetComponent<SnakeInputHandler>();
@@ -17,7 +20,7 @@ public class NetworkSnakeCharacterController : NetworkBehaviour
     {
         if(GetInput(out NetworkInputData data))
         {
-            transform.position = data.newPosition;
+            transform.position += Runner.DeltaTime * speed * data.direction;
         }
     }
 
@@ -31,7 +34,7 @@ public class NetworkSnakeCharacterController : NetworkBehaviour
         if(collision.gameObject.CompareTag("border"))
         {
             snakeInputHandler.isHold = false;
-            snakeInputHandler.newPosition = NetworkSpawnSnake.Instance.spawnPoint.position;
+            snakeInputHandler.direction = NetworkSpawnSnake.Instance.spawnPoint.position;
             NetworkSpawnSnake.Instance.ResetPlayerPosition(transform);
         }
     }
