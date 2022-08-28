@@ -9,6 +9,7 @@ public class SnakeController : SnakeComponent
 	[Networked] private SnakeInput.NetworkInputData Inputs { get; set; }
 	[Networked] public RoomPlayer RoomUser { get; set; }
 
+	[Networked] Vector2 MoveDirection { get; set; }
 
 	public override void FixedUpdateNetwork()
 	{
@@ -24,7 +25,10 @@ public class SnakeController : SnakeComponent
 
 	private void Move(SnakeInput.NetworkInputData input)
 	{
-		Rigidbody.Rigidbody.position += Runner.DeltaTime * speed * input.direction;
+		Vector2 moveDirection = MoveDirection;
+		Rigidbody.Rigidbody.position += speed * moveDirection;
+
+		MoveDirection = input.direction * Runner.DeltaTime;
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
