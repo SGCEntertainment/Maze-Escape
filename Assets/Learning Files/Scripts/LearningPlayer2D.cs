@@ -16,21 +16,26 @@ public class LearningPlayer2D : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        Vector3 direction;
+        //Vector3 direction;
         if (GetInput(out LearningNetworkInputData data))
         {
-            Vector2 moveDirection = data.direction2D;
-            direction = moveDirection;
+            data.direction2D.Normalize();
+            nr2d.Rigidbody.MovePosition(nr2d.Rigidbody.position + Runner.DeltaTime * Speed * data.direction2D);
 
-            direction = direction.normalized;
-            MovementDirection = direction;
-        }
-        else
-        {
-            direction = MovementDirection;
-        }
 
-        Vector2 direction2d = new Vector2(direction.x, direction.y);
-        nr2d.Rigidbody.MovePosition(nr2d.Rigidbody.position + Runner.DeltaTime * Speed * direction2d);
+
+            //Vector2 moveDirection = data.direction2D;
+            //direction = moveDirection;
+
+            //direction = direction.normalized;
+            //MovementDirection = direction;
+        }
+        //else
+        //{
+        //    direction = MovementDirection;
+        //}
+
+        //Vector2 direction2d = new Vector2(direction.x, direction.y);
+        //nr2d.Rigidbody.MovePosition(nr2d.Rigidbody.position + Runner.DeltaTime * Speed * direction2d);
     }
 }
