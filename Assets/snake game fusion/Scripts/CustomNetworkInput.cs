@@ -16,12 +16,41 @@ public class CustomNetworkInput : Fusion.Behaviour, INetworkRunnerCallbacks
 
 	public void OnInput(NetworkRunner runner, NetworkInput input)
 	{
-		var userInput = new CustomNetworkInputStruct()
-		{
-			direction = GetInputDirection()
-		};
+		var frameworkInput = new CustomNetworkInputStruct();
 
-		input.Set(userInput);
+		if (Input.GetKey(KeyCode.W))
+		{
+			frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_FORWARD, true);
+		}
+
+		if (Input.GetKey(KeyCode.S))
+		{
+			frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_BACKWARD, true);
+		}
+
+		if (Input.GetKey(KeyCode.A))
+		{
+			frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_LEFT, true);
+		}
+
+		if (Input.GetKey(KeyCode.D))
+		{
+			frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_RIGHT, true);
+		}
+
+		input.Set(frameworkInput);
+
+
+
+
+
+
+		//var userInput = new CustomNetworkInputStruct()
+		//{
+		//	direction = GetInputDirection()
+		//};
+
+		//input.Set(userInput);
 	}
 
 	public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
@@ -44,4 +73,21 @@ public class CustomNetworkInput : Fusion.Behaviour, INetworkRunnerCallbacks
 public struct CustomNetworkInputStruct : INetworkInput
 {
 	public Vector2 direction;
+
+	public const int BUTTON_FORWARD = 3;
+	public const int BUTTON_BACKWARD = 4;
+	public const int BUTTON_LEFT = 5;
+	public const int BUTTON_RIGHT = 6;
+
+	public NetworkButtons Buttons;
+
+	public bool IsUp(int button)
+	{
+		return Buttons.IsSet(button) == false;
+	}
+
+	public bool IsDown(int button)
+	{
+		return Buttons.IsSet(button);
+	}
 }

@@ -21,17 +21,48 @@ public class SnakeController : SnakeComponent
     //	Move(Inputs);
     //}
 
+    [Networked]
+    public Vector2 MovementDirection { get; set; }
+
     public override void FixedUpdateNetwork()
     {
-        base.FixedUpdateNetwork();
-
-        Vector2 direction = Vector2.zero;
+        Vector3 direction;
         if (GetInput(out CustomNetworkInputStruct input))
         {
-            direction = input.direction.normalized;
+            direction = default;
+
+            if (input.IsDown(NetworkInputPrototype.BUTTON_FORWARD))
+            {
+                direction += Vector3.forward;
+            }
+
+            if (input.IsDown(NetworkInputPrototype.BUTTON_BACKWARD))
+            {
+                direction -= Vector3.forward;
+            }
+
+            if (input.IsDown(NetworkInputPrototype.BUTTON_LEFT))
+            {
+                direction -= Vector3.right;
+            }
+
+            if (input.IsDown(NetworkInputPrototype.BUTTON_RIGHT))
+            {
+                direction += Vector3.right;
+            }
+
+            direction = direction.normalized;
+            MovementDirection = direction;
+
+        }
+        else
+        {
+            direction = MovementDirection;
         }
 
-        Move(direction);
+
+        Vector2 direction2d = new Vector2(direction.x, direction.y + direction.z);
+        Rigidbody.Rigidbody.AddForce(direction2d * speed);
     }
 
     //   private void Move(SnakeInput.NetworkInputData input)
