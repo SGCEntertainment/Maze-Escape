@@ -47,7 +47,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   _HasFinished:
     _value: 0
-  _Snake: {fileID: 0}
+  _Snake: {fileID: 467109669415118680, guid: 8269e6503be80804ea294627516d5728, type: 3}
   _SnakeID: 0
 --- !u!114 &6285565473779242715
 MonoBehaviour:
