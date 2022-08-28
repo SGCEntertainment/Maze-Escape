@@ -20,7 +20,13 @@ public class LearningPlayer2D : NetworkBehaviour
         if (GetInput(out LearningNetworkInputData data))
         {
             data.direction2D.Normalize();
-            nr2d.Rigidbody.MovePosition(nr2d.Rigidbody.position + Runner.DeltaTime * Speed * data.direction2D);
+            transform.position += Runner.DeltaTime * Speed * new Vector3(data.direction2D.x, data.direction2D.y, 0);
+
+
+
+
+
+            //nr2d.Rigidbody.MovePosition(nr2d.Rigidbody.position + Runner.DeltaTime * Speed * data.direction2D);
 
 
 
