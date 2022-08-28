@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/snake game fusion/Scenes/game.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Learning Files/Scenes/learning scene.unity
+    guid: 49136a22048f2244c9208a08b600a7ad
   m_configObjects: {}
