@@ -8,7 +8,7 @@ public class SnakeInput : SnakeComponent, INetworkRunnerCallbacks
 {
 	public struct NetworkInputData : INetworkInput
 	{
-		public Vector2 newPostition;
+		public Vector2 direction;
 	}
 
 	public override void Spawned()
@@ -23,7 +23,7 @@ public class SnakeInput : SnakeComponent, INetworkRunnerCallbacks
 		Runner.RemoveCallbacks(this);
 	}
 
-	Vector2 GetNewPosition()
+	Vector2 GetInputDirection()
     {
 		float x = Input.GetAxis("Horizontal");
 		float y = Input.GetAxis("Vertical");
@@ -35,7 +35,7 @@ public class SnakeInput : SnakeComponent, INetworkRunnerCallbacks
 	{
 		var userInput = new NetworkInputData()
 		{
-			newPostition = GetNewPosition()
+			direction = GetInputDirection()
 		};
 
 		input.Set(userInput);

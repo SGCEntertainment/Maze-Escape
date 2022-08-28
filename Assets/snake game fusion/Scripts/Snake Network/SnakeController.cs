@@ -5,7 +5,7 @@ public class SnakeController : SnakeComponent
 {
 	[SerializeField] float speed;
 
-	public Rigidbody2D Rigidbody;
+	public NetworkRigidbody2D Rigidbody;
 	[Networked] private SnakeInput.NetworkInputData Inputs { get; set; }
 	[Networked] public RoomPlayer RoomUser { get; set; }
 
@@ -24,6 +24,11 @@ public class SnakeController : SnakeComponent
 
 	private void Move(SnakeInput.NetworkInputData input)
 	{
-		Rigidbody.position += Runner.DeltaTime * speed * input.newPostition;
+		Rigidbody.Rigidbody.position += Runner.DeltaTime * speed * input.direction;
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+		MazeGenerator.Instance.ResetPlayerPosition(Rigidbody);
+    }
 }
