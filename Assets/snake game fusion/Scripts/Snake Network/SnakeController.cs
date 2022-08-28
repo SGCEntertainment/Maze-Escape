@@ -62,7 +62,8 @@ public class SnakeController : SnakeComponent
 
 
         Vector2 direction2d = new Vector2(direction.x, direction.y + direction.z);
-        Rigidbody.Rigidbody.AddForce(direction2d * speed);
+        //Rigidbody.Rigidbody.AddForce(direction2d * speed);
+        Rigidbody.TeleportToPosition(Rigidbody.Rigidbody.position + direction2d * speed * Runner.DeltaTime);
     }
 
     //   private void Move(SnakeInput.NetworkInputData input)

@@ -78,7 +78,7 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 
 			if(IsMasterClient)
             {
-				MazeGenerator.Instance.GenerateMaze(8, 16);
+				MazeGenerator.Instance.GenerateMaze(8, 8);
             }
 
             MazeGenerator.Instance.SpawnPlayer(runner, _roomPlayer);
