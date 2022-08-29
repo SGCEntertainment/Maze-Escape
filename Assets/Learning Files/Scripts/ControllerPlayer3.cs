@@ -79,7 +79,7 @@ public class ControllerPlayer3 : NetworkBehaviour
         {
             
             direction = new Vector3(direction.x, direction.z, 0);
-            _nrb2d.TeleportToPosition(transform.position + Runner.DeltaTime * Speed * direction);
+            _nrb2d.TeleportToPosition(transform.position + Runner.DeltaTime * Speed * direction, Vector3.zero, true);
             //transform.position += (direction * Speed * Runner.DeltaTime);
         }
     }
