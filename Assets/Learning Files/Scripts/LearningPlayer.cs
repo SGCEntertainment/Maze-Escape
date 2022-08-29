@@ -10,12 +10,12 @@ public class LearningPlayer : NetworkBehaviour
         _cc = GetComponent<NetworkCharacterControllerPrototype>();
     }
 
-    public override void FixedUpdateNetwork()
-    {
-        if (GetInput(out LearningNetworkInputData data))
-        {
-            data.direction.Normalize();
-            _cc.Move(Runner.DeltaTime * Speed * data.direction);
-        }
-    }
+    //public override void FixedUpdateNetwork()
+    //{
+    //    if (GetInput(out LearningNetworkInputData data))
+    //    {
+    //        data.direction.Normalize();
+    //        _cc.Move(Runner.DeltaTime * Speed * data.direction);
+    //    }
+    //}
 }

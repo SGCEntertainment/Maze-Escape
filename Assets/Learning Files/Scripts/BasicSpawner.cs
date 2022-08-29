@@ -66,7 +66,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        var data = new LearningNetworkInputData();
+        //var data = new LearningNetworkInputData();
 
         //float x = Input.GetAxisRaw("Horizontal");
         //float z = Input.GetAxisRaw("Vertical");
@@ -75,27 +75,49 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         //data.direction = new Vector3(moveDirection.x, 0, moveDirection.y);
         //data.direction2D = moveDirection;
 
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    data.direction += Vector3.forward;
+        //}
+
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    data.direction += Vector3.back;
+        //}
+
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    data.direction += Vector3.left;
+        //}
+
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    data.direction += Vector3.right;
+        //}
+
+        var frameworkInput = new LearningNetworkInputData();
+
         if (Input.GetKey(KeyCode.W))
         {
-            data.direction += Vector3.forward;
+            frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_FORWARD, true);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            data.direction += Vector3.back;
+            frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_BACKWARD, true);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            data.direction += Vector3.left;
+            frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_LEFT, true);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            data.direction += Vector3.right;
+            frameworkInput.Buttons.Set(NetworkInputPrototype.BUTTON_RIGHT, true);
         }
 
-        input.Set(data);
+        input.Set(frameworkInput);
     }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }

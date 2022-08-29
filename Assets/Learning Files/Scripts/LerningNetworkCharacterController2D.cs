@@ -38,12 +38,12 @@ public class LerningNetworkCharacterController2D : NetworkTransform
         }
     }
 
-    protected override void CopyFromBufferToEngine()
-    {
-        rg2d.simulated = true;
-        base.CopyFromBufferToEngine();
-        rg2d.simulated = true;
-    }
+    //protected override void CopyFromBufferToEngine()
+    //{
+    //    rg2d.simulated = true;
+    //    base.CopyFromBufferToEngine();
+    //    rg2d.simulated = true;
+    //}
 
     public virtual void Move(Vector3 direction)
     {
