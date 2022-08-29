@@ -19,7 +19,7 @@ public class NetworkCharacterControllerPrototype : NetworkTransform {
   [HideInInspector]
   public bool IsGrounded { get; set; }
 
-  //[Networked]
+  [Networked]
   [HideInInspector]
   public Vector3 Velocity { get; set; }
 

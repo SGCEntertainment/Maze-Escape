@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777045244761149216}
+  - component: {fileID: 8445220126180391754}
   - component: {fileID: 1777045244761149219}
   - component: {fileID: 1777045244761149218}
   - component: {fileID: 1777045244761149277}
   - component: {fileID: 1777045244761149276}
-  - component: {fileID: 8445220126180391754}
   m_Layer: 0
   m_Name: LearningPlayer2DPrefab
   m_TagString: Untagged
@@ -36,6 +36,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8445220126180391754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777045244761149279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca8ecd26d2d3c040a1369d7c1cf449a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Speed: 1.98
+  _MovementDirection: {x: 0, y: 0}
 --- !u!114 &1777045244761149219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,8 +73,8 @@ MonoBehaviour:
     RawGuidValue: 4782a8f33c63cfa40a19f6943ce0506f
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 1777045244761149277}
   - {fileID: 8445220126180391754}
+  - {fileID: 1777045244761149277}
   SimulationBehaviours: []
 --- !u!50 &1777045244761149218
 Rigidbody2D:
@@ -134,20 +149,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8445220126180391754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777045244761149279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca8ecd26d2d3c040a1369d7c1cf449a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  Speed: 1.98
 --- !u!1 &1777045244978037775
 GameObject:
   m_ObjectHideFlags: 0
