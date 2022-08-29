@@ -68,24 +68,36 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         var data = new LearningNetworkInputData();
 
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        //float x = Input.GetAxisRaw("Horizontal");
+        //float z = Input.GetAxisRaw("Vertical");
 
-        Vector2 moveDirection = new Vector2(x, z);
-        data.direction = new Vector3(moveDirection.x, 0, moveDirection.y);
-        data.direction2D = moveDirection;
+        //Vector2 moveDirection = new Vector2(x, z);
+        //data.direction = new Vector3(moveDirection.x, 0, moveDirection.y);
+        //data.direction2D = moveDirection;
 
-        //if (Input.GetKey(KeyCode.W))
-        //    data.direction += Vector3.forward;
+        if (Input.GetKey(KeyCode.W))
+        {
+            data.direction += Vector3.forward;
+            Debug.Log("W");
+        }
 
-        //if (Input.GetKey(KeyCode.S))
-        //    data.direction += Vector3.back;
+        if (Input.GetKey(KeyCode.S))
+        {
+            data.direction += Vector3.back;
+            Debug.Log("S");
+        }
 
-        //if (Input.GetKey(KeyCode.A))
-        //    data.direction += Vector3.left;
+        if (Input.GetKey(KeyCode.A))
+        {
+            data.direction += Vector3.left;
+            Debug.Log("A");
+        }
 
-        //if (Input.GetKey(KeyCode.D))
-        //    data.direction += Vector3.right;
+        if (Input.GetKey(KeyCode.D))
+        {
+            data.direction += Vector3.right;
+            Debug.Log("D");
+        }
 
         input.Set(data);
     }
