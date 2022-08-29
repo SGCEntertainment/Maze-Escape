@@ -157,7 +157,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2867866793108763005}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _MovementDirection: {x: 0, y: 0, z: 0}
-  Speed: 165
+  Speed: 6
 --- !u!114 &7280525997505949865
 MonoBehaviour:
   m_ObjectHideFlags: 0
