@@ -12,4 +12,12 @@ public static class MyExtensionMethods
 
         return sorted.Select(i => i.GetComponent<CellScript>()).ToArray();
     }
+
+    public static Vector2 GetMoveDirection(this Transform _)
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        return new Vector2(x, y);
+    }
 }

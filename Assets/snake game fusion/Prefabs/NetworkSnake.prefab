@@ -91,12 +91,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467109669415118502}
+  - component: {fileID: 467109669415118683}
   - component: {fileID: 467109669415118501}
   - component: {fileID: 8689198722949484189}
   - component: {fileID: 467109669415118681}
-  - component: {fileID: 467109669415118683}
   - component: {fileID: 467109669415118680}
-  - component: {fileID: 467109669415118686}
   - component: {fileID: -3898673049280578171}
   - component: {fileID: 6970475597493605229}
   m_Layer: 6
@@ -121,6 +120,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &467109669415118683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467109669415118687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 3f81596c19d4a1849abc1d412203e1e1
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 467109669415118681}
+  - {fileID: 467109669415118680}
+  - {fileID: -3898673049280578171}
+  - {fileID: 6970475597493605229}
+  SimulationBehaviours: []
 --- !u!50 &467109669415118501
 Rigidbody2D:
   serializedVersion: 4
@@ -170,35 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8954b59c92e519347a926c06ddae8012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
---- !u!114 &467109669415118683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467109669415118687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 2305
-  NetworkGuid:
-    RawGuidValue: 3f81596c19d4a1849abc1d412203e1e1
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 467109669415118681}
-  - {fileID: 467109669415118680}
-  - {fileID: 467109669415118686}
-  - {fileID: -3898673049280578171}
-  - {fileID: 6970475597493605229}
-  SimulationBehaviours: []
+  _interpolationDataSource: 0
 --- !u!114 &467109669415118680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,23 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6133382db6b80f04f969be56564c2718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
-  speed: 3
-  Rigidbody: {fileID: 6970475597493605229}
-  _RoomUser: {fileID: 0}
---- !u!114 &467109669415118686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467109669415118687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93da4a47f6640a0438e8abb7afddd407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  speed: 1.25
+  _RoomUser: {fileID: 0}
 --- !u!114 &-3898673049280578171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5be05d1344ded4aaef30d70fee7829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
+  _interpolationDataSource: 0
   _HasFinished:
     _value: 0
   _Snake: {fileID: 467109669415118680}
@@ -257,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: -1779252708, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
+  _interpolationDataSource: 0
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 5226983488690145163}
   InterpolateErrorCorrection: 1

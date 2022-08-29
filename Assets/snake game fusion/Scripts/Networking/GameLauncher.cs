@@ -13,9 +13,6 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 	NetworkRunner networkRunner;
 	[SerializeField] RoomPlayer _roomPlayerPrefab;
 
-	//[SerializeField] RoomGenerator roomGenerator;
-
-
 	[Space(10)]
 	[SerializeField] GameObject loadingGO;
 
@@ -32,12 +29,6 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 
 		InitializeNetworkRunner(networkRunner, GameMode.AutoHostOrClient, NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
 		DontDestroyOnLoad(gameObject);
-	}
-
-	private void InitializeObjBeforeSpawn(NetworkRunner runner, NetworkObject obj)
-	{
-		//RoomGenerator _roomGenerator = obj.GetComponent<RoomGenerator>();
-		//_roomGenerator.Generate(3);
 	}
 
 	protected virtual Task InitializeNetworkRunner(NetworkRunner runner, GameMode gameMode, NetAddress netAddress, SceneRef sceneRef, Action<NetworkRunner> initialize)
@@ -74,7 +65,6 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
         {
             var _roomPlayer = runner.Spawn(_roomPlayerPrefab, Vector3.zero, Quaternion.identity, player);
 			bool IsMasterClient = _roomPlayer.HasInputAuthority;
-			//Debug.Log($"_roomPlayer.HasInputAuthority {_roomPlayer.HasInputAuthority}");
 
 			if(IsMasterClient)
             {
@@ -87,7 +77,15 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
         loadingGO.SetActive(false);
 	}
 
-	public void OnInput(NetworkRunner runner, NetworkInput input) {}
+	public void OnInput(NetworkRunner runner, NetworkInput input) 
+	{
+		var frameworkInput = new SnakeNetworkInput
+		{
+			inputDirection = transform.GetMoveDirection()
+        };
+
+        input.Set(frameworkInput);
+	}
 
 	public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) {}
 

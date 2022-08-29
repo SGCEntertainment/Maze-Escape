@@ -3,82 +3,33 @@ using UnityEngine;
 
 public class SnakeController : SnakeComponent
 {
-	[SerializeField] float speed;
+    SnakeNetworkInput Inputs;
 
-	public NetworkRigidbody2D Rigidbody;
-	//[Networked] private SnakeInput.NetworkInputData Inputs { get; set; }
+    [SerializeField] float speed;
 	[Networked] public RoomPlayer RoomUser { get; set; }
-
-    //public override void FixedUpdateNetwork()
-    //{
-    //	base.FixedUpdateNetwork();
-
-    //	if (GetInput(out SnakeInput.NetworkInputData input))
-    //	{
-    //		Inputs = input;
-    //	}
-
-    //	Move(Inputs);
-    //}
-
-    [Networked]
-    public Vector2 MovementDirection { get; set; }
 
     public override void FixedUpdateNetwork()
     {
-        Vector3 direction;
-        if (GetInput(out CustomNetworkInputStruct input))
+        base.FixedUpdateNetwork();
+
+        if (GetInput(out SnakeNetworkInput input))
         {
-            direction = default;
-
-            if (input.IsDown(NetworkInputPrototype.BUTTON_FORWARD))
-            {
-                direction += Vector3.forward;
-            }
-
-            if (input.IsDown(NetworkInputPrototype.BUTTON_BACKWARD))
-            {
-                direction -= Vector3.forward;
-            }
-
-            if (input.IsDown(NetworkInputPrototype.BUTTON_LEFT))
-            {
-                direction -= Vector3.right;
-            }
-
-            if (input.IsDown(NetworkInputPrototype.BUTTON_RIGHT))
-            {
-                direction += Vector3.right;
-            }
-
-            direction = direction.normalized;
-            MovementDirection = direction;
-
-        }
-        else
-        {
-            direction = MovementDirection;
+            Inputs = input;
         }
 
-
-        Vector2 direction2d = new Vector2(direction.x, direction.y + direction.z);
-        //Rigidbody.Rigidbody.AddForce(direction2d * speed);
-        Rigidbody.TeleportToPosition(Rigidbody.Rigidbody.position + direction2d * speed * Runner.DeltaTime);
+        Move(Inputs);
     }
 
-    //   private void Move(SnakeInput.NetworkInputData input)
-    //{
-    //	Rigidbody.Rigidbody.position += Runner.DeltaTime * speed * input.direction;
-    //}
-    private void Move(Vector2 direction)
+    private void Move(SnakeNetworkInput inputs)
     {
-        Rigidbody.Rigidbody.MovePosition(Rigidbody.Rigidbody.position + Runner.DeltaTime * speed * direction);
-        //Rigidbody.Rigidbody.position += Runner.DeltaTime * speed * direction;
-    }
+        Vector2 currentPosition = Snake.Snake.Rigidbody.Rigidbody.position;
+        Vector2 targetPosition = currentPosition + Runner.DeltaTime * speed * inputs.inputDirection.normalized;
 
+        Snake.Snake.Rigidbody.Rigidbody.MovePosition(targetPosition);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-		MazeGenerator.Instance.ResetPlayerPosition(Rigidbody);
+		MazeGenerator.Instance.ResetPlayerPosition(Snake.Snake.Rigidbody);
     }
 }

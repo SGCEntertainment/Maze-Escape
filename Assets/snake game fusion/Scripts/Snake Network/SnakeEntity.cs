@@ -1,11 +1,9 @@
 using Fusion;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class SnakeEntity : SnakeComponent
 {
     public SnakeController Controller { get; private set; }
-    public SnakeInput Input { get; private set; }
     public NetworkRigidbody2D Rigidbody { get; private set; }
 
 	public static readonly List<SnakeEntity> Karts = new List<SnakeEntity>();
@@ -14,7 +12,6 @@ public class SnakeEntity : SnakeComponent
 	{
 		// Set references before initializing all components
 		Controller = GetComponent<SnakeController>();
-		Input = GetComponent<SnakeInput>();
 		Rigidbody = GetComponent<NetworkRigidbody2D>();
 
 		// Initializes all KartComponents on or under the Kart prefab
