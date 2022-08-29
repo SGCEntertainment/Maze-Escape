@@ -56,7 +56,6 @@ public class LerningNetworkCharacterController2D : NetworkTransform
         var horizontalVel = default(Vector3);
         horizontalVel.x = moveVelocity.x;
         horizontalVel.y = moveVelocity.z;
-        //horizontalVel.z = moveVelocity.z;
 
         if (direction == default)
         {
