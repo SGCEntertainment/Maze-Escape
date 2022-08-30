@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 467109669415118681}
   - component: {fileID: 467109669415118680}
   - component: {fileID: -3898673049280578171}
-  - component: {fileID: -1870350843450644805}
+  - component: {fileID: -2820996484064257881}
   m_Layer: 6
   m_Name: NetworkSnake
   m_TagString: Untagged
@@ -135,7 +135,7 @@ MonoBehaviour:
   ObjectInterest: 1
   DefaultInterestGroups: []
   DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
+  AllowStateAuthorityOverride: 0
   AoiPositionSource: {fileID: 0}
   Flags: 2305
   NetworkGuid:
@@ -145,7 +145,7 @@ MonoBehaviour:
   - {fileID: 467109669415118681}
   - {fileID: 467109669415118680}
   - {fileID: -3898673049280578171}
-  - {fileID: -1870350843450644805}
+  - {fileID: -2820996484064257881}
   SimulationBehaviours: []
 --- !u!50 &467109669415118501
 Rigidbody2D:
@@ -229,7 +229,7 @@ MonoBehaviour:
     _value: 0
   _Snake: {fileID: 467109669415118680}
   _SnakeID: 0
---- !u!114 &-1870350843450644805
+--- !u!114 &-2820996484064257881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 467109669415118687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: -1779252708, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
