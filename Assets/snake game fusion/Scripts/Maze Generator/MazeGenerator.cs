@@ -83,7 +83,8 @@ public class MazeGenerator : NetworkBehaviour
 
     Transform MazeParent { get; set; }
 
-    Vector2 spawnPosition;
+    [Networked]
+    Vector2 SpawnPosition { get; set; }
 
     #endregion
 
@@ -126,10 +127,14 @@ public class MazeGenerator : NetworkBehaviour
 
             sortedCellScripts[i].transform.SetParent(MazeParent);
         }
+
+        //SpawnPosition = sortedCellScripts[0].transform.position;
     }
 
     void SetWallsStruct()
     {
+        SpawnPosition = MazeParent.GetChild(0).position;
+
         List<WallsNetworkStruct> wallsNetworkStructs = new List<WallsNetworkStruct>();
         foreach(Transform t in MazeParent)
         {
@@ -150,7 +155,7 @@ public class MazeGenerator : NetworkBehaviour
 
     public void ResetPlayerPosition(NetworkRigidbody2D playerRigidbody)
     {
-        playerRigidbody.TeleportToPosition(spawnPosition);
+        playerRigidbody.TeleportToPosition(SpawnPosition, Vector3.zero, false);
     }
 
     public void SpawnPlayer(NetworkRunner runner, RoomPlayer player)
@@ -159,7 +164,7 @@ public class MazeGenerator : NetworkBehaviour
         var prefab = ResourceManager.Instance.snakeDefinition.prefab;
 
         // Spawn player
-        var entity = runner.Spawn(prefab, spawnPosition, Quaternion.identity, player.Object.InputAuthority);
+        var entity = runner.Spawn(prefab, SpawnPosition, Quaternion.identity, player.Object.InputAuthority);
 
         entity.Controller.RoomUser = player;
         player.Snake = entity.Controller;
@@ -174,8 +179,6 @@ public class MazeGenerator : NetworkBehaviour
         CreateLayout();
 
         SetWallsStruct();
-
-        spawnPosition = MazeParent.GetChild(0).position;
     }
 
     // Creates the grid of cells.

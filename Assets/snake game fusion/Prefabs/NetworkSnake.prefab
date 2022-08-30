@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  speed: 0.85
+  speed: 0.65
   _RoomUser: {fileID: 0}
 --- !u!114 &-3898673049280578171
 MonoBehaviour:
