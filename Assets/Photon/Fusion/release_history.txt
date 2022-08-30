@@ -2,6 +2,19 @@
 
 ## Nightly
 
+### Build 566 (Aug 29, 2022)
+
+**Bug Fixes**
+
+- Fixed: Use of Delays causing a stall
+
+### Build 565 (Aug 26, 2022)
+
+**Bug Fixes**
+
+- Fixed: WebGL Invalid Memory Access
+- Fixed: Linux Build Delay issues
+
 ### Build 564 (Aug 23, 2022)
 
 **Bug Fixes**
