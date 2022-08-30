@@ -13,6 +13,9 @@ public class SnakeEntity : SnakeComponent
 	[HideInInspector]
 	public Rigidbody2D Rigidbody2D { get; set; }
 
+	[HideInInspector]
+	public NetworkRigidbody2D NetworkRigidbody2D { get; set; }
+
 	public static readonly List<SnakeEntity> Karts = new List<SnakeEntity>();
 
 	private void Awake()
@@ -21,6 +24,7 @@ public class SnakeEntity : SnakeComponent
 		Controller = GetComponent<SnakeController>();
 		NetTransform = GetComponent<NetworkTransform>();
 		Rigidbody2D = GetComponent<Rigidbody2D>();
+		NetworkRigidbody2D = GetComponent<NetworkRigidbody2D>();
 
 		// Initializes all KartComponents on or under the Kart prefab
 		var components = GetComponentsInChildren<SnakeComponent>();

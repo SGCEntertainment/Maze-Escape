@@ -31,6 +31,6 @@ public class SnakeController : SnakeComponent
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-		//MazeGenerator.Instance.ResetPlayerPosition(Snake.NetTransform);
+		MazeGenerator.Instance.ResetPlayerPosition(Snake.NetworkRigidbody2D);
     }
 }
