@@ -1,13 +1,17 @@
 using Fusion;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class SnakeEntity : SnakeComponent
 {
-	[UnityEngine.HideInInspector]
+	[HideInInspector]
     public SnakeController Controller { get; private set; }
 
-	[UnityEngine.HideInInspector]
+	[HideInInspector]
 	public NetworkTransform NetTransform { get; private set; }
+
+	[HideInInspector]
+	public Rigidbody2D Rigidbody2D { get; set; }
 
 	public static readonly List<SnakeEntity> Karts = new List<SnakeEntity>();
 
@@ -16,6 +20,7 @@ public class SnakeEntity : SnakeComponent
 		// Set references before initializing all components
 		Controller = GetComponent<SnakeController>();
 		NetTransform = GetComponent<NetworkTransform>();
+		Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		// Initializes all KartComponents on or under the Kart prefab
 		var components = GetComponentsInChildren<SnakeComponent>();

@@ -87,7 +87,7 @@ public class MazeGenerator : NetworkBehaviour
 
     #endregion
 
-    [UnitySerializeField, Capacity(128), Networked(OnChanged =nameof(OnMazeWallsChanged))]
+    [UnitySerializeField, Capacity(256), Networked(OnChanged =nameof(OnMazeWallsChanged))]
     NetworkLinkedList<WallsNetworkStruct> WallsStructs { get; } = MakeInitializer(new WallsNetworkStruct[] { });
 
     public override void Spawned()
@@ -150,7 +150,7 @@ public class MazeGenerator : NetworkBehaviour
 
     public void ResetPlayerPosition(NetworkTransform playerNetTransform)
     {
-        playerNetTransform.TeleportToPosition(spawnPosition);
+        playerNetTransform.TeleportToPosition(spawnPosition, Vector3.zero, false);
     }
 
     public void SpawnPlayer(NetworkRunner runner, RoomPlayer player)
