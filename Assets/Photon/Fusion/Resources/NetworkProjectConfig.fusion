@@ -41,7 +41,7 @@
     "HostMigrationSnapshotInterval": 60,
     "Simulation": {
         "InputDataWordCount": 0,
-        "TickRate": 128,
+        "TickRate": 60,
         "MaxPrediction": 60,
         "DefaultPlayers": 10,
         "ReplicationMode": 0,
@@ -60,7 +60,7 @@
         "SocketSendBufferSize": 256,
         "SocketRecvBufferSize": 256,
         "ConnectAttempts": 10,
-        "ConnectInterval": 0.1,
+        "ConnectInterval": 0.5,
         "ConnectionDefaultRtt": 0.1,
         "ConnectionTimeout": 10.0,
         "ConnectionPingInterval": 1.0,
