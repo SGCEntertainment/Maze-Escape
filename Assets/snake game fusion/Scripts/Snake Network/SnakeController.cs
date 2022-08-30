@@ -22,14 +22,14 @@ public class SnakeController : SnakeComponent
 
     private void Move(SnakeNetworkInput inputs)
     {
-        Vector2 currentPosition = Snake.Snake.Rigidbody.Rigidbody.position;
+        Vector2 currentPosition = transform.position;
         Vector2 targetPosition = currentPosition + Runner.DeltaTime * speed * inputs.inputDirection.normalized;
 
-        Snake.Snake.Rigidbody.Rigidbody.MovePosition(targetPosition);
+        transform.position = targetPosition;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-		MazeGenerator.Instance.ResetPlayerPosition(Snake.Snake.Rigidbody);
+		MazeGenerator.Instance.ResetPlayerPosition(Snake.Snake.NetTransform);
     }
 }

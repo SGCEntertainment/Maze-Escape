@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 public class SnakeEntity : SnakeComponent
 {
+	[UnityEngine.HideInInspector]
     public SnakeController Controller { get; private set; }
-    public NetworkRigidbody2D Rigidbody { get; private set; }
+
+	[UnityEngine.HideInInspector]
+	public NetworkTransform NetTransform { get; private set; }
 
 	public static readonly List<SnakeEntity> Karts = new List<SnakeEntity>();
 
@@ -12,7 +15,7 @@ public class SnakeEntity : SnakeComponent
 	{
 		// Set references before initializing all components
 		Controller = GetComponent<SnakeController>();
-		Rigidbody = GetComponent<NetworkRigidbody2D>();
+		NetTransform = GetComponent<NetworkTransform>();
 
 		// Initializes all KartComponents on or under the Kart prefab
 		var components = GetComponentsInChildren<SnakeComponent>();

@@ -148,9 +148,9 @@ public class MazeGenerator : NetworkBehaviour
         RPC_UpdateMazeWalls(wallsNetworkStructs.ToArray());
     }
 
-    public void ResetPlayerPosition(NetworkRigidbody2D playerRigid)
+    public void ResetPlayerPosition(NetworkTransform playerNetTransform)
     {
-        playerRigid.TeleportToPosition(spawnPosition);
+        playerNetTransform.TeleportToPosition(spawnPosition);
     }
 
     public void SpawnPlayer(NetworkRunner runner, RoomPlayer player)

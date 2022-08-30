@@ -64,11 +64,11 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
         if (runner.IsServer)
         {
             var _roomPlayer = runner.Spawn(_roomPlayerPrefab, Vector3.zero, Quaternion.identity, player);
-			bool IsMasterClient = _roomPlayer.HasInputAuthority;
+            bool IsMasterClient = _roomPlayer.HasInputAuthority;
 
-			if(IsMasterClient)
+            if (IsMasterClient)
             {
-				MazeGenerator.Instance.GenerateMaze(8, 8);
+                MazeGenerator.Instance.GenerateMaze(8, 8);
             }
 
             MazeGenerator.Instance.SpawnPlayer(runner, _roomPlayer);
