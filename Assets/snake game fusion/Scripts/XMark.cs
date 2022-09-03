@@ -19,9 +19,12 @@ public class XMark : MonoBehaviour
 
         float et = 0.0f;
         float fadeTime = 5.0f;
+
+        float aInit = c.a;
+
         while(et < fadeTime)
         {
-            c.a = Mathf.Lerp(1, 0, et / fadeTime);
+            c.a = Mathf.Lerp(aInit, 0, et / fadeTime);
             myRend.color = c;
 
             et += Time.deltaTime;

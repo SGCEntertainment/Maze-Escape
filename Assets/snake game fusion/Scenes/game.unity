@@ -1077,7 +1077,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   mazeRows: 0
   mazeColumns: 0
-  cellPrefab: {fileID: 1521911860, guid: 02018ebf0c5795b4c93eb8499ba13182, type: 3}
+  cellPrefab: {fileID: 1521911860, guid: 22a4562852693fc498ceaaf07b9e7bca, type: 3}
   disableCellSprite: 0
   _WallsStructs: []
   playersCountText: {fileID: 834527160}
