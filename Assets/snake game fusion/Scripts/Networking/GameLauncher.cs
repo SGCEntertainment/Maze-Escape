@@ -15,11 +15,13 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 
 	[Space(10)]
 	[SerializeField] GameObject loadingGO;
+	[SerializeField] GameObject game;
 
 
 	private void Start()
 	{
 		loadingGO.SetActive(true);
+		game.SetActive(false);
 
 		networkRunner = GetComponent<NetworkRunner>();
 
@@ -61,20 +63,21 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 	{
 		Debug.Log($"Player {player} Joined!");
 
-        if (runner.IsServer)
+		if (runner.IsServer)
         {
             var _roomPlayer = runner.Spawn(_roomPlayerPrefab, Vector3.zero, Quaternion.identity, player);
             bool IsMasterClient = _roomPlayer.HasInputAuthority;
 
             if (IsMasterClient)
             {
-                MazeGenerator.Instance.GenerateMaze(16, 16);
+                MazeGenerator.Instance.GenerateMaze(25, 25);
             }
 
             MazeGenerator.Instance.SpawnPlayer(runner, _roomPlayer);
-        }
+		}
 
         loadingGO.SetActive(false);
+		game.SetActive(true);
 	}
 
 	public void OnInput(NetworkRunner runner, NetworkInput input) 
@@ -101,6 +104,7 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 
 	public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
 	{
+		MazeGenerator.Instance.PlyersCount--;
 		Debug.Log($"{player.PlayerId} disconnected.");
 		RoomPlayer.RemovePlayer(runner, player);
 	}

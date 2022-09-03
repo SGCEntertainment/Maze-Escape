@@ -24,7 +24,7 @@ public class RoomPlayer : NetworkBehaviour
 		}
 
 		Players.Add(this);
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 	}
 
 
