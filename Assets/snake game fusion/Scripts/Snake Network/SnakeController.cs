@@ -25,7 +25,6 @@ public class SnakeController : SnakeComponent
         Vector2 currentPosition = transform.position;
         Vector2 targetPosition = currentPosition + Runner.DeltaTime * speed * inputs.inputDirection.normalized;
 
-        //transform.position = targetPosition;
         Snake.Rigidbody2D.MovePosition(targetPosition);
     }
 
