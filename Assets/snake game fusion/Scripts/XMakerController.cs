@@ -26,6 +26,7 @@ public class XMakerController : NetworkBehaviour
         {
             nextFire = Time.time + fireRate;
             Instantiate(xPrefab, transform.position, transform.rotation, parent);
+            SoundManager.Instance.PlaySound(0);
         }
     }
 }

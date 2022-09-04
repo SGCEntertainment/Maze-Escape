@@ -41,9 +41,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 						Debug.Log("[Singleton] Using instance already created: " + _instance.gameObject.name);
 					}
 
-					if (Application.isPlaying)
-						DontDestroyOnLoad(_instance.gameObject);
-				}
+                    if (Application.isPlaying)
+                        DontDestroyOnLoad(_instance.gameObject);
+                }
 
 				return _instance;
 			}
