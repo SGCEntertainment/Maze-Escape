@@ -6,6 +6,8 @@ public class SnakeController : SnakeComponent
     SnakeNetworkInput Inputs;
 
     [SerializeField] float speed;
+    [SerializeField] float rotSpeed;
+
 	[Networked] public RoomPlayer RoomUser { get; set; }
 
     public override void FixedUpdateNetwork()
@@ -24,6 +26,12 @@ public class SnakeController : SnakeComponent
     {
         Vector2 currentPosition = transform.position;
         Vector2 targetPosition = currentPosition + Runner.DeltaTime * speed * inputs.inputDirection.normalized;
+
+        if (inputs.inputDirection != Vector2.zero)
+        {
+            Quaternion targetRotarion = Quaternion.LookRotation(transform.forward, inputs.inputDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotarion, rotSpeed * Runner.DeltaTime);
+        }
 
         Snake.Rigidbody2D.MovePosition(targetPosition);
     }

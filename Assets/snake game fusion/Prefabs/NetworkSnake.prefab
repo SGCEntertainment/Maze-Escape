@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467109667448332822}
   - component: {fileID: 467109667448332821}
+  - component: {fileID: 4288794895563094029}
   m_Layer: 6
   m_Name: body
   m_TagString: Untagged
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 0.3584906, b: 0.31495807, a: 1}
+  m_Sprite: {fileID: 3841201382838475058, guid: c761e24aebfa5d7459b20161ad9b70d2, type: 3}
+  m_Color: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4288794895563094029
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467109667448332819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 115f3d524a89b444cae52738f7b7de55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &467109669415118687
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +119,8 @@ GameObject:
   - component: {fileID: -3898673049280578171}
   - component: {fileID: -2820996484064257881}
   - component: {fileID: 3575895922834531438}
+  - component: {fileID: 637133462104173360}
+  - component: {fileID: 4018260866925663350}
   m_Layer: 6
   m_Name: NetworkSnake
   m_TagString: Untagged
@@ -115,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 467109669415118687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3164778, y: 0.3164778, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5226983488690145163}
   m_Father: {fileID: 0}
@@ -148,6 +170,8 @@ MonoBehaviour:
   - {fileID: -3898673049280578171}
   - {fileID: -2820996484064257881}
   - {fileID: 3575895922834531438}
+  - {fileID: 637133462104173360}
+  - {fileID: 4018260866925663350}
   SimulationBehaviours: []
 --- !u!50 &467109669415118501
 Rigidbody2D:
@@ -185,7 +209,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.16
 --- !u!114 &467109669415118681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  speed: 0.65
+  speed: 1
+  rotSpeed: 850
   _RoomUser: {fileID: 0}
 --- !u!114 &-3898673049280578171
 MonoBehaviour:
@@ -272,6 +297,49 @@ MonoBehaviour:
   _interpolationDataSource: 0
   xPrefab: {fileID: 9117110596094759183, guid: 7d851106e8f066f4d93f87081d9a5a8f, type: 3}
   fireRate: 1
+--- !u!114 &637133462104173360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467109669415118687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Animator: {fileID: 4288794895563094029}
+  SyncSettings: 79
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 00000000557a918d0720eea415b524dc47ef5bf5
+  TriggerHashes: 00000000
+--- !u!114 &4018260866925663350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467109669415118687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72feb3720d4707a49882fafae07e9430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  _animator: {fileID: 4288794895563094029}
 --- !u!1 &8424803628644564573
 GameObject:
   m_ObjectHideFlags: 0

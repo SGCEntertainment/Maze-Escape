@@ -1,0 +1,288 @@
+fileFormatVersion: 2
+guid: c761e24aebfa5d7459b20161ad9b70d2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7878730635050742958
+    second: SeekPng.com_top-down-png_3974509_0
+  - first:
+      213: 3841201382838475058
+    second: SeekPng.com_top-down-png_3974509_1
+  - first:
+      213: 8787464043831379009
+    second: SeekPng.com_top-down-png_3974509_2
+  - first:
+      213: -5924919621945948311
+    second: SeekPng.com_top-down-png_3974509_3
+  - first:
+      213: 5980224000818151251
+    second: SeekPng.com_top-down-png_3974509_4
+  - first:
+      213: 4557645710936570251
+    second: SeekPng.com_top-down-png_3974509_5
+  - first:
+      213: 9121832384589239813
+    second: SeekPng.com_top-down-png_3974509_6
+  - first:
+      213: 5668954332172502145
+    second: SeekPng.com_top-down-png_3974509_7
+  - first:
+      213: 1901953227203980647
+    second: SeekPng.com_top-down-png_3974509_8
+  - first:
+      213: -2391029452305492011
+    second: SeekPng.com_top-down-png_3974509_9
+  - first:
+      213: 1179608954400186778
+    second: SeekPng.com_top-down-png_3974509_10
+  - first:
+      213: 5494056090995485583
+    second: SeekPng.com_top-down-png_3974509_11
+  - first:
+      213: 255615064854531006
+    second: SeekPng.com_top-down-png_3974509_12
+  - first:
+      213: 5476142320749378830
+    second: SeekPng.com_top-down-png_3974509_13
+  - first:
+      213: -6417072811050814868
+    second: SeekPng.com_top-down-png_3974509_14
+  - first:
+      213: 962490851638428913
+    second: SeekPng.com_top-down-png_3974509_15
+  - first:
+      213: 1799059895309789643
+    second: SeekPng.com_top-down-png_3974509_16
+  - first:
+      213: 4772326106785001300
+    second: SeekPng.com_top-down-png_3974509_17
+  - first:
+      213: -4054426007697584291
+    second: SeekPng.com_top-down-png_3974509_18
+  - first:
+      213: -4466335527683458266
+    second: SeekPng.com_top-down-png_3974509_19
+  - first:
+      213: -6980532735214868901
+    second: SeekPng.com_top-down-png_3974509_20
+  - first:
+      213: 3945138747001434849
+    second: SeekPng.com_top-down-png_3974509_21
+  - first:
+      213: 7816485404523804866
+    second: SeekPng.com_top-down-png_3974509_22
+  - first:
+      213: 5596525874987279323
+    second: SeekPng.com_top-down-png_3974509_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SeekPng.com_top-down-png_3974509_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2
+        width: 45
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b00d01b3029a290800000000000000
+      internalID: -7878730635050742958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_top-down-png_3974509_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 11
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23993de5e40be4530800000000000000
+      internalID: 3841201382838475058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_top-down-png_3974509_2
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 2
+        width: 45
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14446196df753f970800000000000000
+      internalID: 8787464043831379009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_top-down-png_3974509_3
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 11
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9678b23def476cda0800000000000000
+      internalID: -5924919621945948311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
