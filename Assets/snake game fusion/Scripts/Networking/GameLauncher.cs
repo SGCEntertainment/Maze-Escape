@@ -13,16 +13,10 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 	NetworkRunner networkRunner;
 	[SerializeField] RoomPlayer _roomPlayerPrefab;
 
-	[Space(10)]
-	[SerializeField] GameObject loadingGO;
-	[SerializeField] GameObject game;
-
 
 	private void Start()
 	{
-		loadingGO.SetActive(true);
-		game.SetActive(false);
-
+		UIManager.Instance.Show(0);
 		networkRunner = GetComponent<NetworkRunner>();
 
 		Application.runInBackground = true;
@@ -76,8 +70,7 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
             MazeGenerator.Instance.SpawnPlayer(runner, _roomPlayer);
 		}
 
-        loadingGO.SetActive(false);
-		game.SetActive(true);
+		UIManager.Instance.Show(1);
 	}
 
 	public void OnInput(NetworkRunner runner, NetworkInput input) 
@@ -104,7 +97,7 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 
 	public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
 	{
-		MazeGenerator.Instance.PlyersCount--;
+		MazeGenerator.Instance.PlayersCount--;
 		Debug.Log($"{player.PlayerId} disconnected.");
 		RoomPlayer.RemovePlayer(runner, player);
 	}

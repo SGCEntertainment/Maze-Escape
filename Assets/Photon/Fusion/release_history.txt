@@ -2,6 +2,53 @@
 
 ## Nightly
 
+### Build 572 (Sep 06, 2022)
+
+**Bug Fixes**
+
+- Fixed: Client never catch up Simulation on low FPS
+- Fixed: GetPlayerConnectionToken now returns the  connection token for the local player on a client also
+- Fixed: FusionStats GraphMaxWidth field was disabled when it should have been enabled. Changed default Graphs
+
+### Build 571 (Sep 05, 2022)
+
+**Changes**
+
+- Re-work STUN Addr Check
+
+**Bug Fixes**
+
+- Fixed: IndexOutOfRangeException if using Max Allowed Players
+
+### Build 569 (Sep 02, 2022)
+
+**What's New**
+
+- `NetworkPrefabTable.Unload` and `NetworkPrefabTable.UnloadAll` - a way to unload prefab instances loaded by Fusion
+
+**Bug Fixes**
+
+- Fixed: Occasional "Collection was modified" exception with Multi-Peer
+- Fixed: Lag-compensation hitbox snapshot history picking the newest snapshot instead of the oldest when the desired tick is older than the oldest snapshot available
+- Fixed: New MasterClient not receiving StateAuth from old MasterClient
+
+### Build 568 (Sep 01, 2022)
+
+**Bug Fixes**
+
+- Fixed: Code-generated methods lacking `PreserveAttribute` and being possibly stripped out
+
+### Build 567 (Aug 31, 2022)
+
+**What's New**
+
+- NetworkRunner.LobbyInfo.Region field
+
+**Bug Fixes**
+
+- Fixed: NetworkMecanAnimator now caches WordCount for Animator at development time. Scene objects had an issue scanning the Animator for properties at runtime
+- Fixed: Assertion error in the `HitboxSnapshot` structure (lag-compensation) when performing multiple queries with sub-tick accuracy on the same tick (introduced on build 564)
+
 ### Build 566 (Aug 29, 2022)
 
 **Bug Fixes**

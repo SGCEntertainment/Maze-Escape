@@ -137,7 +137,7 @@
             Used to keep the client communication
             </summary>
         </member>
-        <member name="M:Fusion.Photon.Realtime.FusionRelayClient.BuildEnterRoomParams(Fusion.Photon.Realtime.TypedLobby,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,Fusion.SessionProperty})">
+        <member name="M:Fusion.Photon.Realtime.FusionRelayClient.BuildEnterRoomParams(Fusion.Photon.Realtime.TypedLobby,System.String,System.Byte,System.Collections.Generic.Dictionary{System.String,Fusion.SessionProperty})">
             <summary>
             Build a new EnterRoomParams ref using the default configs and optional Room Name
             </summary>

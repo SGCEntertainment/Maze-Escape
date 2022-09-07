@@ -8,7 +8,15 @@ public class SnakeController : SnakeComponent
     [SerializeField] float speed;
     [SerializeField] float rotSpeed;
 
+    float traveledDistance;
+    const float stepWidgt = 0.25f;
+
 	[Networked] public RoomPlayer RoomUser { get; set; }
+
+    public override void Spawned()
+    {
+        traveledDistance = 0;
+    }
 
     public override void FixedUpdateNetwork()
     {
@@ -31,6 +39,13 @@ public class SnakeController : SnakeComponent
         {
             Quaternion targetRotarion = Quaternion.LookRotation(transform.forward, inputs.inputDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotarion, rotSpeed * Runner.DeltaTime);
+
+            if (Runner.IsForward)
+            {
+                traveledDistance += speed * Runner.DeltaTime;
+                Snake.StepCount = Mathf.FloorToInt(traveledDistance / stepWidgt);
+                UIManager.Instance.UpdateStepsCountText(Snake.StepCount);
+            }
         }
 
         Snake.Rigidbody2D.MovePosition(targetPosition);

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Fusion;
 
-public class XMakerController : NetworkBehaviour
+public class XMakerController : SnakeComponent
 {
     Transform parent;
     [SerializeField] GameObject xPrefab;

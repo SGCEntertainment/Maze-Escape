@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class SnakeEntity : SnakeComponent
 {
 	[HideInInspector]
+	public int StepCount { get; set; }
+
+	[HideInInspector]
     public SnakeController Controller { get; private set; }
 
 	[HideInInspector]

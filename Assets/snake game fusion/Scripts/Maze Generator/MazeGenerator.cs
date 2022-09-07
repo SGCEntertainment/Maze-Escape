@@ -12,7 +12,6 @@
 
 using Fusion;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 public class MazeGenerator : NetworkBehaviour 
@@ -92,11 +91,8 @@ public class MazeGenerator : NetworkBehaviour
     [UnitySerializeField, Capacity(625), Networked(OnChanged = nameof(OnMazeWallsChanged))]
     NetworkLinkedList<WallsNetworkStruct> WallsStructs { get; } = MakeInitializer(new WallsNetworkStruct[] { });
 
-
-    [SerializeField] Text playersCountText;
-
     [Networked(OnChanged = nameof(OnPlayerCountChanged))]
-    public int PlyersCount { get; set; }
+    public int PlayersCount { get; set; }
 
     public static void OnPlayerCountChanged(Changed<MazeGenerator> changed)
     {
@@ -105,7 +101,7 @@ public class MazeGenerator : NetworkBehaviour
 
     public void UpdateLocalPlayersCount()
     {
-        playersCountText.text = string.Format("Игроков в комнате: {0}", PlyersCount);
+        UIManager.Instance.UpdatePlayersCount(PlayersCount);
     }
 
     public override void Spawned()
@@ -185,7 +181,7 @@ public class MazeGenerator : NetworkBehaviour
         player.Snake = entity.Controller;
 
         entity.transform.name = $"Snake ({index})";
-        PlyersCount++;
+        PlayersCount++;
     }
 
     public void GenerateMaze(int rows, int columns)
