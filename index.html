@@ -4,21 +4,47 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Лабиринт по сети</title>
-	<link rel="stylesheet" href="Data/style.css">
+    <link rel="stylesheet" href="Data/style.css">
+	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   </head>
   <body style="text-align: center">
     <canvas id="unity-canvas"></canvas>
-    <script src="Build/WebGL.loader.js"></script>
     <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebGL.data.br",
-        frameworkUrl: "Build/WebGL.framework.js.br",
-        codeUrl: "Build/WebGL.wasm.br",
+	
+      var unityGame;
+	  
+	  vkBridge.send('VKWebAppInit');
+	  
+      const canvas = document.querySelector("#unity-canvas");
+      const buildUrl = "Build";
+      const loaderUrl = buildUrl + "/WebGL.loader.js";
+	  
+      const config = 
+	  {
+        dataUrl: buildUrl + "/WebGL.data.br",
+        frameworkUrl: buildUrl + "/WebGL.framework.js.br",
+        codeUrl: buildUrl + "/WebGL.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Лабиринт по сети",
-        productVersion: "1.0",
-      });
+        productVersion: "0.1",
+      };
+      const script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => 
+	  {
+        createUnityInstance(canvas, config, (progress) => 
+		{
+
+        }).then((unityInstance) => 
+		{
+          unityGame = unityInstance;
+        }).catch((message) => 
+		{
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
     </script>
   </body>
 </html>
