@@ -5,7 +5,6 @@ using Fusion;
 public class RoomPlayer : NetworkBehaviour
 {
 	public static readonly List<RoomPlayer> Players = new List<RoomPlayer>();
-
 	public static RoomPlayer Local;
 
 	[Networked] public NetworkBool HasFinished { get; set; }

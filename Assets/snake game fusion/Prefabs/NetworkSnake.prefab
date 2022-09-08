@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 3575895922834531438}
   - component: {fileID: 637133462104173360}
   - component: {fileID: 4018260866925663350}
+  - component: {fileID: 1964460685972866999}
   m_Layer: 6
   m_Name: NetworkSnake
   m_TagString: Untagged
@@ -172,6 +173,7 @@ MonoBehaviour:
   - {fileID: 3575895922834531438}
   - {fileID: 637133462104173360}
   - {fileID: 4018260866925663350}
+  - {fileID: 1964460685972866999}
   SimulationBehaviours: []
 --- !u!50 &467109669415118501
 Rigidbody2D:
@@ -238,7 +240,6 @@ MonoBehaviour:
   _interpolationDataSource: 0
   speed: 0.85
   rotSpeed: 1000
-  _StepCount: 0
   _RoomUser: {fileID: 0}
 --- !u!114 &-3898673049280578171
 MonoBehaviour:
@@ -312,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   Animator: {fileID: 4288794895563094029}
+  TotalWords: 1
   SyncSettings: 79
   FloatAccuracy:
     _value: 0
@@ -341,6 +343,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _animator: {fileID: 4288794895563094029}
+--- !u!114 &1964460685972866999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467109669415118687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf0d081c9423f840acb0fb9b91be1e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!1 &8424803628644564573
 GameObject:
   m_ObjectHideFlags: 0
