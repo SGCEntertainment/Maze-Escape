@@ -14,6 +14,7 @@
       var unityGame;
 	  
 	  vkBridge.send('VKWebAppInit');
+	  vkBridge.send("VKWebAppGetUserInfo").then(data => console.log(data)).catch(error => console.log(error));
 	  
       const canvas = document.querySelector("#unity-canvas");
       const buildUrl = "Build";
