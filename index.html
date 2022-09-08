@@ -49,7 +49,6 @@
 		vkBridge.send("VKWebAppShowNativeAds", {ad_format: "interstitial"}).then(unityGame.SendMessage('Receiver', 'ShowAdwHandler')).catch(error => console.log(error));
 	}
 	
-      const hideFullScreenButton = "1";
       const buildUrl = "Build";
       const loaderUrl = buildUrl + "/WebGL.loader.js";
       const config = {
@@ -64,35 +63,7 @@
 
       const container = document.querySelector("#unity-container");
       const canvas = document.querySelector("#unity-canvas");
-      const loadingCover = document.querySelector("#loading-cover");
-      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-      const progressBarFull = document.querySelector("#unity-progress-bar-full");
-      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      const spinner = document.querySelector('.spinner');
-
-      const canFullscreen = (function() 
-	  {
-        for (const key of [
-            'exitFullscreen',
-            'webkitExitFullscreen',
-            'webkitCancelFullScreen',
-            'mozCancelFullScreen',
-            'msExitFullscreen',
-          ]) {
-          if (key in document) {
-            return true;
-          }
-        }
-        return false;
-      }());
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) 
-	  {
-        container.className = "unity-mobile";
-        config.devicePixelRatio = 0;
-      }
 	  
-      loadingCover.style.display = "";
 
       const script = document.createElement("script");
       script.src = loaderUrl;
@@ -100,27 +71,11 @@
 	  {
         createUnityInstance(canvas, config, (progress) => 
 		{
-          spinner.style.display = "none";
-          progressBarEmpty.style.display = "";
-          progressBarFull.style.width = `${100 * progress}%`;
 		  
-		  //canvas.style.background = "url('https://candyquiz.hype-game.ru/back.jpg') center/ cover"
 		  
         }).then((unityInstance) => 
 		{
 		  unityGame = unityInstance; //This mine
-		  
-          loadingCover.style.display = "none";
-          if (canFullscreen) 
-		  {
-            if (!hideFullScreenButton) 
-			{
-              fullscreenButton.style.display = "";
-            }
-            fullscreenButton.onclick = () => 
-			{
-              unityInstance.SetFullscreen(1);
-            };
           }
         }).catch((message) => 
 		{
