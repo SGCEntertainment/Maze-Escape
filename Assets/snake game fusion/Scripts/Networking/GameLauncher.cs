@@ -20,7 +20,7 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 		networkRunner = GetComponent<NetworkRunner>();
 
 		Application.runInBackground = true;
-		Application.targetFrameRate = Screen.currentResolution.refreshRate;
+		//Application.targetFrameRate = Screen.currentResolution.refreshRate;
 		QualitySettings.vSyncCount = 1;
 
 		InitializeNetworkRunner(networkRunner, GameMode.AutoHostOrClient, NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
