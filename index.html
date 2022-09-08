@@ -3,46 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Лабиринт по сети</title>
     <link rel="stylesheet" href="Data/style.css">
-	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   </head>
-  <body class="dark">
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas"></canvas>
-    </div>
-    
-	
+  <body style="text-align: center">
+    <canvas id="unity-canvas"></canvas>
     <script>
-	
-	var  unityGame;
-	
-	vkBridge.send('VKWebAppInit');
-	
-	function VKWebAppJoinGroupMethod(group_id)
-	{
-		vkBridge.send("VKWebAppJoinGroup", {"group_id": group_id}).then(data => console.log(data)).catch(error => console.log(error));
-	}
-	
-	function VKWebAppCheckNativeAdsMethod()
-	{
-		vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"}).then(data => console.log(data)).catch(error => console.log(error));
-	}
-	
-	function VKWebAppShowNativeAdsRewardMethod()
-	{
-		vkBridge.send("VKWebAppShowNativeAds", {ad_format: "reward"}).then(unityGame.SendMessage('Receiver', 'AddEnergy')).catch(error => console.log(error));
-	}
-	
-	function ShowInterstitialIndexMethod()
-	{
-		vkBridge.send("VKWebAppShowNativeAds", {ad_format: "interstitial"}).then(unityGame.SendMessage('Receiver', 'ShowAdwHandler')).catch(error => console.log(error));
-	}
-	
+	    
+      var unityGame;
+	    
+      const canvas = document.querySelector("#unity-canvas");
       const buildUrl = "Build";
       const loaderUrl = buildUrl + "/WebGL.loader.js";
-      const config = {
+      const config = 
+      {
         dataUrl: buildUrl + "/WebGL.data.br",
         frameworkUrl: buildUrl + "/WebGL.framework.js.br",
         codeUrl: buildUrl + "/WebGL.wasm.br",
@@ -51,25 +25,19 @@
         productName: "Лабиринт по сети",
         productVersion: "0.1",
       };
-
-      const container = document.querySelector("#unity-container");
-      const canvas = document.querySelector("#unity-canvas");
-	  
-
+	    
       const script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => 
-	  {
+      {
         createUnityInstance(canvas, config, (progress) => 
-		{
-		  
-		  
+	{
+
         }).then((unityInstance) => 
-		{
-		  unityGame = unityInstance; //This mine
-          
+	{
+          unityGame = unityInstance;
         }).catch((message) => 
-		{
+	{
           alert(message);
         });
       };
