@@ -60,4 +60,9 @@ public class UIManager : MonoBehaviour
         StatsGO.SetActive(IsShow);
         otherStepCount.text = string.Format("{0:000}", value);
     }
+
+    public void SetUserInfoData(string userInfoJsonData)
+    {
+        Debug.Log(userInfoJsonData);
+    }
 }

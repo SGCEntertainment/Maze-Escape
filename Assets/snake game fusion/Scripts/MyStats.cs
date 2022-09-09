@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MyStats : SnakeComponent
 {
-    public const string keyNick = "nickname";
+    UserInfo UserInfo { get; set; }
 
     private void OnMouseEnter()
     {
