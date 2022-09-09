@@ -3,7 +3,20 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance => Singleton<UIManager>.Instance;
+    //public static UIManager Instance => Singleton<UIManager>.Instance;
+    private static UIManager instance;
+    public static UIManager Instance
+    {
+        get
+        {
+            if(!instance)
+            {
+                instance = FindObjectOfType<UIManager>();
+            }
+
+            return instance;
+        }
+    }
 
     [Space(10)]
     [SerializeField] GameObject loadingGO;
