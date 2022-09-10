@@ -39,7 +39,7 @@
         }).then((unityInstance) => 
 		{
           unityGame = unityInstance;
-		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', 'testmessgae!!!!!')).catch(error => console.log(error));
+		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', data.data)).catch(error => console.log(error));
         }).catch((message) => 
 		{
           alert(message);
