@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     public void SetUserInfoData(string userInfoJsonData)
     {
         Container container = JsonUtility.FromJson<Container>(userInfoJsonData);
-        myName.text = $"{container.data.first_name}\n{container.data.last_name}";
+        myName.text = $"{container.first_name}\n{container.last_name}";
     }
 
     public void ShowStatsGO(bool IsActive)
