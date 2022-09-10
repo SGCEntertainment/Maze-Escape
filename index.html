@@ -60,7 +60,7 @@
     "timezone": 3
   } 
 };
-		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(d))).catch(error => console.log(error));
+		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(data))).catch(error => console.log(error));
         }).catch((message) => 
 		{
           alert(message);
