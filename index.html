@@ -59,8 +59,8 @@
     "photo_200": "https://pp.userapi.com/c836333/v836333553/5b137/tEJNQNigU80.jpg]",
     "timezone": 3
   } 
-};
-		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(data))).catch(error => console.log(error));
+};		  vkBridge.send("VKWebAppGetUserInfo").then(data => console.log(JSON.stringify(data)))).catch(error => console.log(error));
+		  //vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(data))).catch(error => console.log(error));
         }).catch((message) => 
 		{
           alert(message);
