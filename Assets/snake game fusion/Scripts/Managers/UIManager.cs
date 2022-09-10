@@ -5,7 +5,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance => Singleton<UIManager>.Instance;
 
-    [HideInInspector] Container container;
+    [HideInInspector]
+    public  Container container;
 
     [Space(10)]
     [SerializeField] GameObject loadingGO;
@@ -55,6 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowStatsGO(bool IsActive)
     {
+        Debug.Log($"container: {container}");
         otherName.text = $"{container.first_name}\n{container.last_name}";
         StartCoroutine(container.GetTexture(container.photo_100, (texture) =>
         {
