@@ -2,7 +2,7 @@ using Fusion;
 
 public class MyStats : SnakeComponent
 {
-    UserInfo UserInfo { get; set; }
+    //UserInfo UserInfo { get; set; }
 
     private void OnMouseEnter()
     {
