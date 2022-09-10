@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text playersCountText;
 
     [Space(10)]
-    [SerializeField] Image myIcon;
+    [SerializeField] RawImage myIcon;
     [SerializeField] Text myName;
 
     [Space(10)]
@@ -42,6 +42,11 @@ public class UIManager : MonoBehaviour
     {
         Container container = JsonUtility.FromJson<Container>(userInfoJsonData);
         myName.text = $"{container.first_name}\n{container.last_name}";
+
+        StartCoroutine(container.GetTexture(container.photo_100, (texture) => 
+        {
+            myIcon.texture = texture;
+        }));
     }
 
     public void ShowStatsGO(bool IsActive)
