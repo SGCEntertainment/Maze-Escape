@@ -40,8 +40,8 @@
 		{
           unityGame = unityInstance;
 		var d = {"id":508882623,"bdate":"16.1","bdate_visibility":2,"country":{"id":1,"title":"Россия"},"timezone":3,"photo_200":"https://sun2.userapi.com/sun2-3/s/v1/ig2/klSmi7-hywQU9cpUKCT64x6zU79-oumSeX6rhy-D8LElmTTj1zEqNL1J6Xio1tIQuwPfrVDljHYm4qkQnHMR-BU9.jpg?size=200x200&quality=96&crop=0,0,351,351&ava=1","photo_max_orig":"https://sun2.userapi.com/sun2-3/s/v1/ig2/zMfRoj1jZLNhf_BUpm_rXEaIR_VYx7a3ThgN7HCYhnBPRG5TxpkQHckNiqbyhPvaF0RN_fTNPlSEu5QzVu_0J5T1.jpg?size=351x351&quality=96&crop=0,0,351,351&ava=1","sex":2,"photo_100":"https://sun2.userapi.com/sun2-3/s/v1/ig2/ywPdfwenk0pioNwSq6CPmzYn2X2ABKhCjG9NAK94quX6NpXp4GmTiu0_tI_fJqOuWXkzzgDLqe0-BdZiwRoE6JPP.jpg?size=100x100&quality=96&crop=0,0,351,351&ava=1","first_name":"Филипп","last_name":"Соколов","can_access_closed":true,"is_closed":false};		  
-		vkBridge.send("VKWebAppGetUserInfo").then(data => console.log(JSON.stringify(d))).catch(error => console.log(error));
-		  //vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(data))).catch(error => console.log(error));
+		//vkBridge.send("VKWebAppGetUserInfo").then(data => console.log(JSON.stringify(d))).catch(error => console.log(error));
+		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(d))).catch(error => console.log(error));
         }).catch((message) => 
 		{
           alert(message);
