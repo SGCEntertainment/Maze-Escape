@@ -5,6 +5,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance => Singleton<UIManager>.Instance;
 
+    [HideInInspector] Container container;
+
     [Space(10)]
     [SerializeField] GameObject loadingGO;
     [SerializeField] GameObject game;
@@ -18,6 +20,8 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] GameObject StatsGO;
+    [SerializeField] Text otherName;
+    [SerializeField] RawImage otherIcon;
 
     public void Show(int id)
     {
@@ -40,7 +44,7 @@ public class UIManager : MonoBehaviour
 
     public void SetUserInfoData(string userInfoJsonData)
     {
-        Container container = JsonUtility.FromJson<Container>(userInfoJsonData);
+        container = JsonUtility.FromJson<Container>(userInfoJsonData);
         myName.text = $"{container.first_name}\n{container.last_name}";
 
         StartCoroutine(container.GetTexture(container.photo_100, (texture) => 
@@ -51,6 +55,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowStatsGO(bool IsActive)
     {
+        otherName.text = $"{container.first_name}\n{container.last_name}";
+        StartCoroutine(container.GetTexture(container.photo_100, (texture) =>
+        {
+            otherIcon.texture = texture;
+        }));
+
         StatsGO.SetActive(IsActive);
     }
 }
