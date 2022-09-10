@@ -1,5 +1,4 @@
 using Fusion;
-using UnityEngine.UI;
 
 public class MyStats : SnakeComponent
 {
@@ -28,6 +27,6 @@ public class MyStats : SnakeComponent
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     public void RPC_ShowMyStats([RpcTarget] PlayerRef _, bool IsShow)
     {
-        UIManager.Instance.UpdateOtherStepCount(Snake.StepCount, IsShow);
+        UIManager.Instance.ShowStatsGO(IsShow);
     }
 }

@@ -3,20 +3,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    //public static UIManager Instance => Singleton<UIManager>.Instance;
-    private static UIManager instance;
-    public static UIManager Instance
-    {
-        get
-        {
-            if(!instance)
-            {
-                instance = FindObjectOfType<UIManager>();
-            }
-
-            return instance;
-        }
-    }
+    public static UIManager Instance => Singleton<UIManager>.Instance;
 
     [Space(10)]
     [SerializeField] GameObject loadingGO;
@@ -24,25 +11,13 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] Text playersCountText;
-    [SerializeField] Text stepsCountText;
 
     [Space(10)]
-    [SerializeField] InputField myNinckNameInputField;
-    [SerializeField] Text otherStepCount;
-    [SerializeField] GameObject StatsGO;
+    [SerializeField] Image myIcon;
+    [SerializeField] Text myName;
 
-    private void Start()
-    {
-        myNinckNameInputField.onValueChanged.AddListener((s) =>
-        {
-            if(string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s))
-            {
-                return;
-            }
-            
-            //SaveNickName(s);
-        });
-    }
+    [Space(10)]
+    [SerializeField] GameObject StatsGO;
 
     public void Show(int id)
     {
@@ -63,19 +38,14 @@ public class UIManager : MonoBehaviour
         playersCountText.text = string.Format("x {0:000}", value);
     }
 
-    public void UpdateStepsCountText(int value)
-    {
-        stepsCountText.text = string.Format("x {0:000}", value);
-    }
-
-    public void UpdateOtherStepCount(int value, bool IsShow = true)
-    {
-        StatsGO.SetActive(IsShow);
-        otherStepCount.text = string.Format("{0:000}", value);
-    }
-
     public void SetUserInfoData(string userInfoJsonData)
     {
-        Debug.Log(userInfoJsonData);
+        UserInfo userInfo = JsonUtility.FromJson<UserInfo>(userInfoJsonData);
+        myName.text = $"{userInfo.data.first_name}\n {userInfo.data.last_name}";
+    }
+
+    public void ShowStatsGO(bool IsActive)
+    {
+        StatsGO.SetActive(IsActive);
     }
 }

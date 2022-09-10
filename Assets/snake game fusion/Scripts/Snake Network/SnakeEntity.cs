@@ -4,12 +4,6 @@ using System.Collections.Generic;
 
 public class SnakeEntity : SnakeComponent
 {
-	[Networked, HideInInspector]
-	public int StepCount { get; set; }
-
-	[Networked, HideInInspector]
-	public string NickName { get; set; }
-
 	[HideInInspector]
     public SnakeController Controller { get; private set; }
 
