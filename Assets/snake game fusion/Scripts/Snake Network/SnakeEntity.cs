@@ -8,9 +8,6 @@ public class SnakeEntity : SnakeComponent
     public SnakeController Controller { get; private set; }
 
 	[HideInInspector]
-	public NetworkTransform NetTransform { get; private set; }
-
-	[HideInInspector]
 	public Rigidbody2D Rigidbody2D { get; set; }
 
 	[HideInInspector]
@@ -18,11 +15,11 @@ public class SnakeEntity : SnakeComponent
 
 	public static readonly List<SnakeEntity> Karts = new List<SnakeEntity>();
 
+
 	private void Awake()
 	{
 		// Set references before initializing all components
 		Controller = GetComponent<SnakeController>();
-		NetTransform = GetComponent<NetworkTransform>();
 		Rigidbody2D = GetComponent<Rigidbody2D>();
 		NetworkRigidbody2D = GetComponent<NetworkRigidbody2D>();
 

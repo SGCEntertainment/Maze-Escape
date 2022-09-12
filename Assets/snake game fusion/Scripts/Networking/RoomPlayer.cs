@@ -9,11 +9,10 @@ public class RoomPlayer : NetworkBehaviour
 
 	[Networked] public NetworkBool HasFinished { get; set; }
 	[Networked] public SnakeController Snake { get; set; }
-	[Networked] public int SnakeID { get; set; }
 
 	public bool IsLeader => Object != null && Object.IsValid && Object.HasStateAuthority;
 
-	public override void Spawned()
+    public override void Spawned()
 	{
 		base.Spawned();
 
@@ -22,8 +21,7 @@ public class RoomPlayer : NetworkBehaviour
 			Local = this;
 		}
 
-		Players.Add(this);
-		//DontDestroyOnLoad(gameObject);
+        Players.Add(this);
 	}
 
 

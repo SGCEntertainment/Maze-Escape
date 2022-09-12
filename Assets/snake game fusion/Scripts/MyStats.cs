@@ -2,29 +2,74 @@ using Fusion;
 
 public class MyStats : SnakeComponent
 {
-    private void OnMouseEnter()
+    [System.Serializable]
+    public struct UserInfo : INetworkStruct
     {
-        if (Object.HasInputAuthority)
+        [Networked] public NetworkString<_32> FirstName { get; set; }
+        [Networked] public NetworkString<_32> LastName { get; set; }
+        [Networked] public NetworkString<_128> Photo { get; set; }
+
+        public static UserInfo Defaults
+        {
+            get
+            {
+                var result = new UserInfo
+                {
+                    FirstName = "-1",
+                    LastName = "-1",
+                    Photo = "-1"
+                };
+
+                return result;
+            }
+        }
+    }
+
+    [Networked, UnitySerializeField] UserInfo UserInfoData { get; set; } = UserInfo.Defaults;
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+    public void RPC_Configure(string fn, string ln, string photo)
+    {
+        var copy = UserInfoData;
+        copy.FirstName = fn;
+        copy.LastName = ln;
+        copy.Photo = photo;
+        UserInfoData = copy;
+    }
+
+    public override void Spawned()
+    {
+        if(!Object.HasInputAuthority)
         {
             return;
         }
 
-        RPC_ShowMyStats(Runner.LocalPlayer, true);
+        string fn = UIManager.Instance.Container.first_name;
+        string ln = UIManager.Instance.Container.last_name;
+        string photo = UIManager.Instance.Container.photo_100;
+
+        RPC_Configure(fn, ln, photo);
+    }
+
+    private void OnMouseEnter()
+    {
+        if (!Object.HasInputAuthority)
+        {
+            RPC_ShowMyStats(Runner.LocalPlayer, true);
+        }
     }
 
     private void OnMouseExit()
     {
-        if (Object.HasInputAuthority)
+        if (!Object.HasInputAuthority)
         {
-            return;
+            RPC_ShowMyStats(Runner.LocalPlayer, false);
         }
-
-        RPC_ShowMyStats(Runner.LocalPlayer, false);
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     public void RPC_ShowMyStats([RpcTarget] PlayerRef _, bool IsShow)
     {
-        UIManager.Instance.ShowStatsGO(IsShow);
+        UIManager.Instance.ShowStatsGO(IsShow, UserInfoData.FirstName.Value, UserInfoData.LastName.Value, UserInfoData.Photo.Value);
     }
 }

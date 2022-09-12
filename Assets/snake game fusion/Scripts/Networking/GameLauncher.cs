@@ -58,9 +58,9 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 		Debug.Log($"Player {player} Joined!");
 
 		if (runner.IsServer)
-        {
-            var _roomPlayer = runner.Spawn(_roomPlayerPrefab, Vector3.zero, Quaternion.identity, player);
-            bool IsMasterClient = _roomPlayer.HasInputAuthority;
+		{
+			var _roomPlayer = runner.Spawn(_roomPlayerPrefab, Vector3.zero, Quaternion.identity, player);
+			bool IsMasterClient = _roomPlayer.HasInputAuthority;
 
             if (IsMasterClient)
             {

@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 using UnityEngine;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class Container
 {
     public string first_name;
