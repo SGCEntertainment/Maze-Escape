@@ -15,9 +15,9 @@ public class MyStats : SnakeComponent
             {
                 var result = new UserInfo
                 {
-                    FirstName = "-1",
-                    LastName = "-1",
-                    Photo = "-1"
+                    FirstName = "Стандартная",
+                    LastName = "Страница",
+                    Photo = "https://vk.com/images/camera_200.png"
                 };
 
                 return result;
