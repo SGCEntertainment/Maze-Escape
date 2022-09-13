@@ -53,8 +53,6 @@
             (progress) => {}
           );
           
-          console.log(userID);
-          
           const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
             "method": "users.get", 
             "request_id": "userInfoRequest", 
@@ -64,8 +62,8 @@
              "v":5.131, 
             "access_token":token}});
           
-          let photo = userInfo.response.at(0).photo_100;
-          console.log(photo);
+          const userInfoJson = JSON.stringify(userInfo);
+          console.log(userInfoJson);
           
           unityGame.SendMessage(
             'UI Manager',
