@@ -12,6 +12,7 @@
     <script>
       
       let unityGame;
+      let appID = 51421116;
 
       const canvas = document.querySelector('#unity-canvas');
       const buildUrl = 'Build';
@@ -38,7 +39,7 @@
           
           const info = await vkBridge.send('VKWebAppGetUserInfo');
           const data = await vkBridge.send('VKWebAppGetAuthToken', {
-            app_id: 51421116,
+            app_id: appID,
             scope: 'photos',
           });
 
