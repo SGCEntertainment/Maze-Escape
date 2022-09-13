@@ -32,23 +32,25 @@
 
       script.onload = async () => {
         try {
+          
           await vkBridge.send('VKWebAppInit');
-
+          
+          const info = await vkBridge.send('VKWebAppGetUserInfo');
           const data = await vkBridge.send('VKWebAppGetAuthToken', {
             app_id: 51421116,
             scope: 'photos',
           });
 
           const token = data.access_token.toString();
-          console.log(token);
+          const userID = info.data.id;
+          
+          console.log(userID);
 
           unityGame = await createUnityInstance(
             canvas,
             config,
             (progress) => {}
           );
-
-          const info = await vkBridge.send('VKWebAppGetUserInfo');
           
           const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
             "method": "users.get", 
