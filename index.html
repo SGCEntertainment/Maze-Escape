@@ -52,8 +52,12 @@
           const info = await vkBridge.send('VKWebAppGetUserInfo');
           
           const photo = await vkBridge.send("VKWebAppCallAPIMethod", {
-            "method": "users.get", "request_id": "32test", "params": {
-            "user_ids": "508882623", "v":5.131, 
+            "method": "users.get", 
+            "request_id": "32test", 
+            "params": {
+            "user_ids": "508882623", 
+             "fields": "photo_100",
+             "v":5.131, 
             "access_token":token}});
           
           console.log(photo);
