@@ -15,14 +15,37 @@
 	    
       var token;
 	    
-	   function handleTokenResponse(data) {
-    token = data.access_token.toString();
-    console.log(token);
+	    
+	    
+async function getToken()
+{
+   const data = await vkBridge.send('VKWebAppGetAuthToken', { app_id: 51421116, scope: 'photos' });
+   token = data.access_token.toString();
 }
+	    
+getToken();
+console.log(token);
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	  
       vkBridge.send('VKWebAppInit');
       //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(data.access_token)).catch(error => console.log(error));
-      vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(handleTokenResponse).catch(error => console.log(error));
+      //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(handleTokenResponse).catch(error => console.log(error));
 	    
 	    //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(JSON.stringify(data))).catch(error => console.log(error));
 	  
