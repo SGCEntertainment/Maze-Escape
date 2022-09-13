@@ -51,7 +51,7 @@
 
           const info = await vkBridge.send('VKWebAppGetUserInfo');
           
-          const photo = await vkBridge.send("VKWebAppCallAPIMethod", {
+          const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
             "method": "users.get", 
             "request_id": "32test", 
             "params": {
@@ -60,7 +60,8 @@
              "v":5.131, 
             "access_token":token}});
           
-          console.log(photo.photo_100);
+          const photo = userInfo.photo_100.toString();
+          console.log(photo);
           console.log('121111123123');
           
           unityGame.SendMessage(
