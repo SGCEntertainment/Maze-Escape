@@ -63,13 +63,8 @@
             "access_token":token}});
           
           const userInfoJson = JSON.stringify(userInfo);
-          console.log(userInfoJson);
           
-          unityGame.SendMessage(
-            'UI Manager',
-            'SetUserInfoData',
-            JSON.stringify(info)
-          );
+          unityGame.SendMessage('UI Manager', 'SetUserInfoData', userInfoJson);
         } catch (error) {
           console.log(error);
         }
