@@ -59,8 +59,8 @@
              "v":5.131, 
             "access_token":token}});
           
-          //let photo = userInfo.at(0);
-          console.log(userInfo);
+          let photo = userInfo.response.at(0).photo_100;
+          console.log(photo);
           console.log('121111123123');
           
           unityGame.SendMessage(
