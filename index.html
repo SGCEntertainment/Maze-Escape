@@ -44,7 +44,7 @@
           });
 
           const token = data.access_token.toString();
-          const userID = info.id;
+          const userID = info.id.toString();
           
 
           unityGame = await createUnityInstance(
@@ -59,7 +59,7 @@
             "method": "users.get", 
             "request_id": "userInfoRequest", 
             "params": {
-            "user_ids": "userID", 
+            "user_ids": userID, 
              "fields": "photo_100",
              "v":5.131, 
             "access_token":token}});
