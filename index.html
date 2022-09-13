@@ -18,7 +18,7 @@
       vkBridge.send('VKWebAppInit');
 	    
       vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(data.access_token)).catch(error => console.log(error));
-	console.log(access_token); 
+	//console.log(access_token); 
 	    
 	    //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(JSON.stringify(data))).catch(error => console.log(error));
 	  
