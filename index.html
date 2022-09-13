@@ -1,88 +1,69 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Лабиринт по сети</title>
-    <link rel="stylesheet" href="Data/style.css">
-	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <link rel="stylesheet" href="Data/style.css" />
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   </head>
-  <body style="text-align: center">
+  <body style="text-align: center;">
     <canvas id="unity-canvas"></canvas>
     <script>
-	
-      var unityGame;
-	    
-      var token;
-	    
-	    
-	    
-async function getToken()
-{
-   const data = await vkBridge.send('VKWebAppGetAuthToken', { app_id: 51421116, scope: 'photos' });
-   token = data.access_token.toString();
-}
-	    
-getToken();
-console.log(token);
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	  
-      vkBridge.send('VKWebAppInit');
-      //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(data.access_token)).catch(error => console.log(error));
-      //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(handleTokenResponse).catch(error => console.log(error));
-	    
-	    //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(JSON.stringify(data))).catch(error => console.log(error));
-	  
-	  //vkBridge.send("VKWebAppCallAPIMethod", {"method": "users.get", "request_id": "32test", "params": {"user_ids": "508882623", "v":"{5.131}", "access_token":"your_token"}}); 
-	    
-	    
-	    
-      const canvas = document.querySelector("#unity-canvas");
-      const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/WebGL.loader.js";
-	  
-      const config = 
-	  {
-        dataUrl: buildUrl + "/WebGL.data.br",
-        frameworkUrl: buildUrl + "/WebGL.framework.js.br",
-        codeUrl: buildUrl + "/WebGL.wasm.br",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Лабиринт по сети",
-        productVersion: "0.1",
-      };
-      const script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => 
-	  {
-        createUnityInstance(canvas, config, (progress) => 
-		{
+      let unityGame;
+      //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(JSON.stringify(data))).catch(error => console.log(error));
 
-        }).then((unityInstance) => 
-		{
-          unityGame = unityInstance;
-		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(data))).catch(error => console.log(error));
-        }).catch((message) => 
-		{
-          alert(message);
-        });
+      //vkBridge.send("VKWebAppCallAPIMethod", {"method": "users.get", "request_id": "32test", "params": {"user_ids": "508882623", "v":"{5.131}", "access_token":"your_token"}});
+
+      const canvas = document.querySelector('#unity-canvas');
+      const buildUrl = 'Build';
+      const loaderUrl = buildUrl + '/WebGL.loader.js';
+
+      const config = {
+        dataUrl: buildUrl + '/WebGL.data.br',
+        frameworkUrl: buildUrl + '/WebGL.framework.js.br',
+        codeUrl: buildUrl + '/WebGL.wasm.br',
+        streamingAssetsUrl: 'StreamingAssets',
+        companyName: 'DefaultCompany',
+        productName: 'Лабиринт по сети',
+        productVersion: '0.1',
       };
+
+      const script = document.createElement('script');
+
+      script.src = loaderUrl;
+
+      script.onload = async () => {
+        try {
+          await vkBridge.send('VKWebAppInit');
+
+          const data = await vkBridge.send('VKWebAppGetAuthToken', {
+            app_id: 51421116,
+            scope: 'photos',
+          });
+
+          const token = data.access_token.toString();
+
+          console.log(token);
+
+          unityGame = await createUnityInstance(
+            canvas,
+            config,
+            (progress) => {}
+          );
+
+          const info = await vkBridge.send('VKWebAppGetUserInfo');
+
+          unityGame.SendMessage(
+            'UI Manager',
+            'SetUserInfoData',
+            JSON.stringify(info)
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
       document.body.appendChild(script);
     </script>
   </body>
