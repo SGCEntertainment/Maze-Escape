@@ -18,8 +18,11 @@
       var jsonObj;
 	  
 	  vkBridge.send('VKWebAppInit');
-
-	  vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(JSON.stringify(data))).catch(error => console.log(error));
+	    
+	  vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(data.access_token)).catch(error => console.log(error));
+	 
+	    
+	    //vkBridge.send("VKWebAppGetAuthToken", { "app_id": 51421116, "scope": "photos"}).then(data => console.log(JSON.stringify(data))).catch(error => console.log(error));
 	  
 	  //vkBridge.send("VKWebAppCallAPIMethod", {"method": "users.get", "request_id": "32test", "params": {"user_ids": "508882623", "v":"{5.131}", "access_token":"your_token"}}); 
 	    
