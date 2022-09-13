@@ -10,6 +10,7 @@
   <body style="text-align: center;">
     <canvas id="unity-canvas"></canvas>
     <script>
+      
       let unityGame;
 
       const canvas = document.querySelector('#unity-canvas');
@@ -44,7 +45,6 @@
           const token = data.access_token.toString();
           const userID = info.id;
           
-          console.log(userID);
 
           unityGame = await createUnityInstance(
             canvas,
@@ -54,16 +54,15 @@
           
           const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
             "method": "users.get", 
-            "request_id": "32test", 
+            "request_id": "userInfoRequest", 
             "params": {
-            "user_ids": "508882623", 
+            "user_ids": "userID", 
              "fields": "photo_100",
              "v":5.131, 
             "access_token":token}});
           
           let photo = userInfo.response.at(0).photo_100;
           console.log(photo);
-          console.log('121111123123');
           
           unityGame.SendMessage(
             'UI Manager',
