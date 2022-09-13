@@ -52,11 +52,13 @@
             (progress) => {}
           );
           
+          console.log(userID);
+          
           const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
             "method": "users.get", 
             "request_id": "userInfoRequest", 
             "params": {
-            "user_ids": "userID", 
+            "user_ids": "userID.toString()", 
              "fields": "photo_100",
              "v":5.131, 
             "access_token":token}});
