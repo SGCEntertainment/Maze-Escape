@@ -5,13 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Лабиринт по сети</title>
     <link rel="stylesheet" href="Data/style.css" />
-    
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   </head>
   <body style="text-align: center;">
     <canvas id="unity-canvas"></canvas>
     <script>
-      
-      
       
       let unityGame;
       let appID = 51421116;
@@ -34,12 +32,42 @@
 
       script.src = loaderUrl;
 
-      script.onload = () => {
-      
-
-          createUnityInstance(canvas,config);
+      script.onload = async () => {
+        try {
           
-        
+          await vkBridge.send('VKWebAppInit');
+          
+          const info = await vkBridge.send('VKWebAppGetUserInfo');
+          const data = await vkBridge.send('VKWebAppGetAuthToken', {
+            app_id: appID,
+            scope: 'photos',
+          });
+
+          const token = data.access_token.toString();
+          const userID = info.id.toString();
+          
+
+          unityGame = await createUnityInstance(
+            canvas,
+            config,
+            (progress) => {}
+          );
+          
+          const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
+            "method": "users.get", 
+            "request_id": "userInfoRequest", 
+            "params": {
+            "user_ids": userID, 
+             "fields": "photo_100",
+             "v":5.131, 
+            "access_token":token}});
+          
+          const userInfoJson = JSON.stringify(userInfo.response.at(0));
+          
+          unityGame.SendMessage('UI Manager', 'SetUserInfoData', userInfoJson);
+        } catch (error) {
+          console.log(error);
+        }
       };
 
       document.body.appendChild(script);
