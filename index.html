@@ -11,7 +11,7 @@
     <canvas id="unity-canvas"></canvas>
     <script>
       
-      vkBridge.send('VKWebAppInit');
+      
       
       let unityGame;
       let appID = 51421116;
@@ -37,7 +37,7 @@
       script.onload = () => {
       
           
-          
+          vkBridge.send('VKWebAppInit');
           createUnityInstance(canvas,config);
           
         
