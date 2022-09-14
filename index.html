@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Лабиринт по сети</title>
     <link rel="stylesheet" href="Data/style.css" />
-    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    
   </head>
   <body style="text-align: center;">
     <canvas id="unity-canvas"></canvas>
@@ -36,8 +36,7 @@
 
       script.onload = () => {
       
-          
-          vkBridge.send('VKWebAppInit');
+
           createUnityInstance(canvas,config);
           
         
