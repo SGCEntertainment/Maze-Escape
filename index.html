@@ -32,42 +32,13 @@
 
       script.src = loaderUrl;
 
-      script.onload = async () => {
-        try {
+      script.onload = () => {
+      
           
-          await vkBridge.send('VKWebAppInit');
+          vkBridge.send('VKWebAppInit');
           
-          const info = await vkBridge.send('VKWebAppGetUserInfo');
-          const data = await vkBridge.send('VKWebAppGetAuthToken', {
-            app_id: appID,
-            scope: 'photos',
-          });
-
-          const token = data.access_token.toString();
-          const userID = info.id.toString();
           
-
-          unityGame = await createUnityInstance(
-            canvas,
-            config,
-            (progress) => {}
-          );
-          
-          const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
-            "method": "users.get", 
-            "request_id": "userInfoRequest", 
-            "params": {
-            "user_ids": userID, 
-             "fields": "photo_100",
-             "v":5.131, 
-            "access_token":token}});
-          
-          const userInfoJson = JSON.stringify(userInfo.response.at(0));
-          
-          unityGame.SendMessage('UI Manager', 'SetUserInfoData', userInfoJson);
-        } catch (error) {
-          console.log(error);
-        }
+        
       };
 
       document.body.appendChild(script);
