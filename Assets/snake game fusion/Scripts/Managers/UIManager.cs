@@ -24,10 +24,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text otherName;
     [SerializeField] RawImage otherIcon;
 
-    //private void Start()
-    //{
-    //    SetUserInfoData(string.Empty);
-    //}
+    #if UNITY_EDITOR || UNITY_STANDALONE
+    private void Start()
+    {
+        SetUserInfoData(string.Empty);
+    }
+    #endif
 
     public void Show(int id)
     {
@@ -52,13 +54,16 @@ public class UIManager : MonoBehaviour
     {
         Container = JsonUtility.FromJson<Container>(userInfoJsonData);
 
-        //int rv = Random.Range(0, 1000);
-        //Container = new Container()
-        //{
-        //    first_name = $"first name {rv}",
-        //    last_name = $"last name {rv}",
-        //    photo_100 = "https://pp.userapi.com/c836333/v836333553/5b138/2eWBOuj5A4g.jpg"
-        //};
+        #if UNITY_EDITOR || UNITY_STANDALONE
+        int rv = Random.Range(0, 1000);
+        Container = new Container()
+        {
+            id = rv,
+            first_name = $"no name {rv}",
+            last_name = $"no last name {rv}",
+            photo_100 = "https://vk.com/images/camera_100.png"
+        };
+        #endif
 
         myName.text = $"{Container.first_name}\n{Container.last_name}";
         StartCoroutine(Container.GetTexture(Container.photo_100, (texture) =>
