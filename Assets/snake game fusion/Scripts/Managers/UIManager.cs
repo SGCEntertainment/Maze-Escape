@@ -77,7 +77,6 @@ public class UIManager : MonoBehaviour
         }
 
         otherName.text = $"{fn}\n{ln}";
-        Debug.Log(photo);
         StartCoroutine(Container.GetTexture(photo, (texture) =>
         {
             otherIcon.texture = texture;

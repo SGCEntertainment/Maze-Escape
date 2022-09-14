@@ -1,50 +1,75 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Лабиринт по сети</title>
-    <link rel="stylesheet" href="Data/style.css">
-	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <link rel="stylesheet" href="Data/style.css" />
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   </head>
-  <body style="text-align: center">
+  <body style="text-align: center;">
     <canvas id="unity-canvas"></canvas>
     <script>
-	
-      var unityGame;
-	  
-	  vkBridge.send('VKWebAppInit');
-	  
-      const canvas = document.querySelector("#unity-canvas");
-      const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/WebGL.loader.js";
-	  
-      const config = 
-	  {
-        dataUrl: buildUrl + "/WebGL.data.br",
-        frameworkUrl: buildUrl + "/WebGL.framework.js.br",
-        codeUrl: buildUrl + "/WebGL.wasm.br",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Лабиринт по сети",
-        productVersion: "0.1",
-      };
-      const script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => 
-	  {
-        createUnityInstance(canvas, config, (progress) => 
-		{
+      
+      let unityGame;
+      let appID = 51421116;
 
-        }).then((unityInstance) => 
-		{
-          unityGame = unityInstance;
-		  vkBridge.send("VKWebAppGetUserInfo").then(data => unityGame.SendMessage('UI Manager', 'SetUserInfoData', JSON.stringify(data))).catch(error => console.log(error));
-        }).catch((message) => 
-		{
-          alert(message);
-        });
+      const canvas = document.querySelector('#unity-canvas');
+      const buildUrl = 'Build';
+      const loaderUrl = buildUrl + '/WebGL.loader.js';
+
+      const config = {
+        dataUrl: buildUrl + '/WebGL.data.br',
+        frameworkUrl: buildUrl + '/WebGL.framework.js.br',
+        codeUrl: buildUrl + '/WebGL.wasm.br',
+        streamingAssetsUrl: 'StreamingAssets',
+        companyName: 'DefaultCompany',
+        productName: 'Лабиринт по сети',
+        productVersion: '0.1',
       };
+
+      const script = document.createElement('script');
+
+      script.src = loaderUrl;
+
+      script.onload = async () => {
+        try {
+          
+          await vkBridge.send('VKWebAppInit');
+          
+          const info = await vkBridge.send('VKWebAppGetUserInfo');
+          const data = await vkBridge.send('VKWebAppGetAuthToken', {
+            app_id: appID,
+            scope: 'photos',
+          });
+
+          const token = data.access_token.toString();
+          const userID = info.id.toString();
+          
+
+          unityGame = await createUnityInstance(
+            canvas,
+            config,
+            (progress) => {}
+          );
+          
+          const userInfo = await vkBridge.send("VKWebAppCallAPIMethod", {
+            "method": "users.get", 
+            "request_id": "userInfoRequest", 
+            "params": {
+            "user_ids": userID, 
+             "fields": "photo_100",
+             "v":5.131, 
+            "access_token":token}});
+          
+          const userInfoJson = JSON.stringify(userInfo.response.at(0));
+          
+          unityGame.SendMessage('UI Manager', 'SetUserInfoData', userInfoJson);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
       document.body.appendChild(script);
     </script>
   </body>

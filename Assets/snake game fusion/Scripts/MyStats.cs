@@ -7,7 +7,7 @@ public class MyStats : SnakeComponent
     {
         [Networked] public NetworkString<_32> FirstName { get; set; }
         [Networked] public NetworkString<_32> LastName { get; set; }
-        [Networked] public NetworkString<_128> Photo { get; set; }
+        [Networked] public NetworkString<_256> Photo { get; set; }
 
         public static UserInfo Defaults
         {
@@ -17,7 +17,7 @@ public class MyStats : SnakeComponent
                 {
                     FirstName = "Стандартная",
                     LastName = "Страница",
-                    Photo = "https://vk.com/images/camera_200.png"
+                    Photo = "https://vk.com/images/camera_100.png"
                 };
 
                 return result;
