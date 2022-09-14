@@ -61,7 +61,6 @@ public class UIManager : MonoBehaviour
         //};
 
         myName.text = $"{Container.first_name}\n{Container.last_name}";
-
         StartCoroutine(Container.GetTexture(Container.photo_100, (texture) =>
         {
             myIcon.texture = texture;

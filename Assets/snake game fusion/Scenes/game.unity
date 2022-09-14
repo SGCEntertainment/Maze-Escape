@@ -2653,7 +2653,6 @@ MonoBehaviour:
   StatsGO: {fileID: 1797766079}
   otherName: {fileID: 588953920}
   otherIcon: {fileID: 973763300}
-  _textBox: {fileID: 899363247}
 --- !u!1 &993729381
 GameObject:
   m_ObjectHideFlags: 0
