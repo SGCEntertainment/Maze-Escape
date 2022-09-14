@@ -88,7 +88,7 @@ public class MazeGenerator : NetworkBehaviour
 
     #endregion
 
-    [UnitySerializeField, Capacity(625), Networked(OnChanged = nameof(OnMazeWallsChanged))]
+    [UnitySerializeField, Capacity(16), Networked(OnChanged = nameof(OnMazeWallsChanged))]
     NetworkLinkedList<WallsNetworkStruct> WallsStructs { get; } = MakeInitializer(new WallsNetworkStruct[] { });
 
     [Networked(OnChanged = nameof(OnPlayerCountChanged))]
