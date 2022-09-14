@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public class Container
 {
+    public int id;
     public string first_name;
     public string last_name;
     public string photo_100;
